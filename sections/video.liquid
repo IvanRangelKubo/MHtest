@@ -1,24 +1,19 @@
 <div class="seccvideo">
   <div class="custom-container">
-    <div id="w-node-_0ce52b8e-6890-71e7-b774-00658fe5fec2-bfeb76ea"
-      class="w-layout-layout quickstackvideosecc wf-layout-layout">
+    <div id="w-node-_0ce52b8e-6890-71e7-b774-00658fe5fec2-bfeb76ea" class="w-layout-layout quickstackvideosecc wf-layout-layout">
 
       <div id="w-node-_0ce52b8e-6890-71e7-b774-00658fe5fec3-bfeb76ea" class="w-layout-cell cellvideo">
 
         {% if section.settings.video-chanel == 'youtubevideo' %}
-        <div style="padding-top:56.17021276595745%" class="w-embed-youtubevideo iframyoutube">
-          <iframe src="{{ section.settings.Video_link }}" frameborder="0"
-            style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:auto"
-            allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
-        </div>
+          <div style="padding-top:56.17021276595745%" class="w-embed-youtubevideo iframyoutube">
+            <iframe src="{{ section.settings.Video_link }}" frameborder="0" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:auto" allow="autoplay; encrypted-media" allowfullscreen="" ></iframe>
+          </div>
         {% endif %}
 
         {% if section.settings.video-chanel == 'shopifyvideo' %}
-        <div class="videolibreriashopify w-embed w-iframe">
-          <iframe style="position: absolute; top: 0px; left: 0px;" width="100%" height="100%"
-            src="{{ section.settings.Video_link-2.sources.first.url }}" frameborder="0"
-            allow="accelerometer; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
-        </div>
+          <div class="videolibreriashopify w-embed w-iframe">
+            <iframe style="position: absolute; top: 0px; left: 0px;" width="100%" height="100%" src="{{ section.settings.Video_link-2.sources.first.url }}" frameborder="0" allow="accelerometer; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+          </div>
         {% endif %}
 
       </div>
@@ -36,85 +31,85 @@
   </div>
 </div>
 
-{% schema %}
-{
-"name": "Video",
-"enabled_on": {
-"templates": ["index"]
-},
-"settings": [
-{
-"type": "header",
-"content": "Video"
-},
-{
-"type": "radio",
-"id": "video-chanel",
-"label": "Tipo de video",
-"options": [
-{
-"value": "youtubevideo",
-"label": "Youtube"
-},
-{
-"value": "shopifyvideo",
-"label": "Shopify"
-}
-],
-"default": "youtubevideo"
-},
-{
-"type": "text",
-"id": "Video_link",
-"label": "Video de youtube",
-"info": "Su URL debe tener la siguiente estructura: https://www.youtube.com/embed/",
-"default": "https://www.youtube.com/embed/ALjJOLVGxhQ?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=13"
-},
-{
-"type":"video",
-"id": "Video_link-2",
-"label": "Video de Shopify"
-},
-{
-"type": "header",
-"content": "Informacion"
-},
-{
-"type": "text",
-"id": "title",
-"label": "Titulo",
-"default": "La aventura comienza en familia,"
-},
-{
-"type": "text",
-"id": "subtitle",
-"label": "Subtitulo",
-"default": "¡Te ves y te sientes bien!"
-},
-{
-"type": "textarea",
-"id": "description",
-"label": "Texto",
-"default": "Disfruta de la comodidad y estilo de brand junto a tus pequeños. Visita nuestro Blog para inspiración,consejos y tendencias para que destaques y saques lo mejor de ti esta temporada."
-},
-{
-"type": "text",
-"id": "button",
-"label": "Boton",
-"default": "Visitar Blog"
-},
-{
-"type": "url",
-"id": "url",
-"label": "URL Boton"
-}
+  {% schema  %}
+  {
+    "name": "Video",
+    "enabled_on": {
+      "templates": ["index"]
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "Video"
+      },
+      {
+        "type": "radio",
+        "id": "video-chanel",
+        "label": "Tipo de video",
+        "options": [
+          {
+            "value": "youtubevideo",
+            "label": "Youtube"
+          },
+          {
+            "value": "shopifyvideo",
+            "label": "Shopify"
+          }
+        ],
+        "default": "youtubevideo"
+      },
+      {
+        "type": "text",
+        "id": "Video_link",
+        "label": "Video de youtube",
+        "info": "Su URL debe tener la siguiente estructura: https://www.youtube.com/embed/",
+        "default": "https://www.youtube.com/embed/ALjJOLVGxhQ?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=13"
+      },
+      {
+        "type":"video",
+        "id": "Video_link-2",
+        "label": "Video de Shopify"
+      },
+      {
+        "type": "header",
+        "content": "Informacion"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Titulo",
+        "default": "La aventura comienza en familia,"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitulo",
+        "default": "¡Te ves y te sientes bien!"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Texto",
+        "default": "Disfruta de la comodidad y estilo de Yale junto a tus pequeños. Visita nuestro Blog para inspiración, consejos y tendencias para que destaques y saques lo mejor de ti esta temporada."
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Boton",
+        "default": "Visitar Blog"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "URL Boton"
+      }
 
 
-],
-"presets": [
-{
-"name": "Video"
-}
-]
-}
-{% endschema %}
+    ],
+    "presets": [
+      {
+        "name": "Video"
+      }
+    ]
+  }
+  {% endschema %}

@@ -66,7 +66,7 @@ product-info {
 
 .shopify-payment-button__button--unbranded:hover,
 .shopify-payment-button__button--unbranded:hover:not([disabled]) {
-  background-color: var(--brand-blue);
+  background-color: var(--yale-blue);
   color: #fff;
 }
 
@@ -1351,8 +1351,8 @@ a.product__text {
 }
 
 .shopify-payment-button__button--unbranded{
-    border: 2px solid var(--brand-blue);
-    color: var(--brand-blue);
+    border: 2px solid var(--yale-blue);
+    color: var(--yale-blue);
     background-color: #0000;
     text-align: center;
     border-radius: 0;
@@ -1365,7 +1365,7 @@ a.product__text {
     margin-bottom: 5px;
     padding-left: 5px;
     padding-right: 5px;
-    font-family: Ubuntu, Helvetica, sans-serif;
+    font-family: "Museosans 500",Verdana,sans-serif;
     font-size: 15px;
     font-weight: 500;
     line-height: 21px;

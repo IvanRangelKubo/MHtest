@@ -402,7 +402,7 @@ quick-add-modal .product__sku ,quick-add-modal .contextrainfo,quick-add-modal .d
 
 quick-add-modal .product:not(.featured-product) .product__view-details {
   color: #000;
-  font-family: Ubuntu, Helvetica, sans-serif;
+  font-family: "Museosans 500", Verdana, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 16px;

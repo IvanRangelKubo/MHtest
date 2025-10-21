@@ -1,74 +1,66 @@
 {% if product.metafields.custom.guia_de_tallas %}
 <div class="modaltallas">
-  <div class="sizescnt">
-    <img src="{{ 'icon_brand_red.svg' |  asset_url }}" class="iconsizechart">
-    <h4 class="titletalalstabla">{{product.metafields.custom.guia_de_tallas.value['nombre_de_guia_de_tallas'].value}}
-    </h4>
-    <div class="contitemssizes">
-      <div id="w-node-a1447224-cd31-3d1a-1972-b5bb159c9d5d-bfeb76eb"
-        class="w-layout-layout rowsizesitem wf-layout-layout">
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_primera_columna'].value}}</div>
-        </div>
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_segunda_columna'].value}}</div>
-        </div>
-        {% if product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value %}
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value}}</div>
-        </div>
-        {% endif %}
-        {% if product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value %}
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value}}</div>
-        </div>
-        {% endif %}
-      </div>
-      {% for tallas in product.metafields.custom.guia_de_tallas.value['valores_primera_columna1'].value %}
-      <div id="w-node-df7b705d-cc10-f3a2-279f-69435b593d50-bfeb76eb"
-        class="w-layout-layout rowsizesitem wf-layout-layout">
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">{{tallas}}</div>
-        </div>
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">
-            {{product.metafields.custom.guia_de_tallas.value['valores_segunda_columna'].value[forloop.index0]}}</div>
-        </div>
-        {% if product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value %}
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">
-            {{product.metafields.custom.guia_de_tallas.value['valores_tercera_columna'].value[forloop.index0]}}</div>
-        </div>
-        {% endif %}
-        {% if product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value %}
-        <div class="w-layout-cell cellsizeitem">
-          <div class="sizetext">
-            {{product.metafields.custom.guia_de_tallas.value['valores_cuarta_columna'].value[forloop.index0]}}</div>
-        </div>
-        {% endif %}
-      </div>
-      {% endfor %}
-    </div>
-    <a href="#" class="closesizechart w-button" data-ix="cerrar-tallas">X</a>
-    <div class="smallsize">Todas las medidas son en centímetros (cm).</div>
-  </div>
-</div>
+ <div class="sizescnt">
+   <img src="{{ 'icon_Yale_red.svg' |  asset_url }}" class="iconsizechart">
+   <h4 class="titletalalstabla">{{product.metafields.custom.guia_de_tallas.value['nombre_de_guia_de_tallas'].value}}</h4>
+   <div class="contitemssizes">
+     <div id="w-node-a1447224-cd31-3d1a-1972-b5bb159c9d5d-bfeb76eb" class="w-layout-layout rowsizesitem wf-layout-layout">
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_primera_columna'].value}}</div>
+       </div>
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_segunda_columna'].value}}</div>
+       </div>
+      {% if  product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value %}
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value}}</div>
+       </div>
+      {%  endif %}
+      {% if  product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value %}
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value}}</div>
+       </div>
+      {%  endif %}
+     </div>
+     {%  for tallas in  product.metafields.custom.guia_de_tallas.value['valores_primera_columna1'].value %}
+     <div id="w-node-df7b705d-cc10-f3a2-279f-69435b593d50-bfeb76eb" class="w-layout-layout rowsizesitem wf-layout-layout">
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{tallas}}</div>
+       </div>
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['valores_segunda_columna'].value[forloop.index0]}}</div>
+       </div>
+       {% if  product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value %}
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['valores_tercera_columna'].value[forloop.index0]}}</div>
+       </div>
+      {%  endif %}
+      {% if  product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value %}
+       <div class="w-layout-cell cellsizeitem">
+         <div class="sizetext">{{product.metafields.custom.guia_de_tallas.value['valores_cuarta_columna'].value[forloop.index0]}}</div>
+       </div>
+      {%  endif %}
+     </div>
+    {% endfor %}
+   </div>
+   <a href="#" class="closesizechart w-button" data-ix="cerrar-tallas">X</a>
+   <div class="smallsize">Todas las medidas son en centímetros (cm).</div>
+ </div>
+</div>  
 
-{% unless product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value %}
-<style>
-  #w-node-a1447224-cd31-3d1a-1972-b5bb159c9d5d-bfeb76eb,
-  #w-node-df7b705d-cc10-f3a2-279f-69435b593d50-bfeb76eb {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+{% unless  product.metafields.custom.guia_de_tallas.value['titulo_cuarta_columna'].value %}
+ <style>
+  #w-node-a1447224-cd31-3d1a-1972-b5bb159c9d5d-bfeb76eb, #w-node-df7b705d-cc10-f3a2-279f-69435b593d50-bfeb76eb{
+  grid-template-columns: 1fr 1fr 1fr;
+ }
+ </style>
+{%  endunless %}
+{% unless  product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value  %}
+ <style>
+ #w-node-a1447224-cd31-3d1a-1972-b5bb159c9d5d-bfeb76eb, #w-node-df7b705d-cc10-f3a2-279f-69435b593d50-bfeb76eb{
+ grid-template-columns: 1fr 1fr;
+}
 </style>
-{% endunless %}
-{% unless product.metafields.custom.guia_de_tallas.value['titulo_tercera_columna'].value %}
-<style>
-  #w-node-a1447224-cd31-3d1a-1972-b5bb159c9d5d-bfeb76eb,
-  #w-node-df7b705d-cc10-f3a2-279f-69435b593d50-bfeb76eb {
-    grid-template-columns: 1fr 1fr;
-  }
-</style>
-{% endunless %}
+{%  endunless %}
 
-{% endif %}
+{%  endif %}

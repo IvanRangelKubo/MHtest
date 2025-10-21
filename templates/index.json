@@ -74,7 +74,7 @@
         "icon_E8gjRJ": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/1_camisa_manga_corta_brand.svg",
+            "icon": "shopify://shop_images/1_camisa_manga_corta_yale.svg",
             "name": "Camisas Manga Corta",
             "link": "shopify://collections/camisa-manga-corta"
           }
@@ -82,7 +82,7 @@
         "icon_T6ecPQ": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/2_camisa_manga_larga_brand.svg",
+            "icon": "shopify://shop_images/2_camisa_manga_larga_yale.svg",
             "name": "Camisas Manga Larga",
             "link": "shopify://collections/camisa-manga-larga"
           }
@@ -90,7 +90,7 @@
         "icon_yNrqdF": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/3_pantalon_casual_brand.svg",
+            "icon": "shopify://shop_images/3_pantalon_casual_yale.svg",
             "name": "Pantalones Casuales",
             "link": "shopify://collections/pantalon-casual"
           }
@@ -98,7 +98,7 @@
         "icon_hMwb7X": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/5_jeans_brand.svg",
+            "icon": "shopify://shop_images/5_jeans_yale.svg",
             "name": "Jeans",
             "link": "shopify://collections/jeans"
           }
@@ -106,7 +106,7 @@
         "icon_F9jhkE": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/7_slack_brand.svg",
+            "icon": "shopify://shop_images/7_slack_yale.svg",
             "name": "Pantalón De Vestir",
             "link": "shopify://collections/pantalon-vestir"
           }
@@ -114,7 +114,7 @@
         "icon_34zLbG": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/6_polo_brand.svg",
+            "icon": "shopify://shop_images/6_polo_yale.svg",
             "name": "Playeras Polo",
             "link": "shopify://collections/playeras-polo"
           }
@@ -122,7 +122,7 @@
         "icon_8DpRFh": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/4_pantalon_cintura_ajustable_brand.svg",
+            "icon": "shopify://shop_images/4_pantalon_cintura_ajustable_yale.svg",
             "name": "Pantalones Cintura Ajustable",
             "link": "shopify://collections/cintura-ajustable"
           }
@@ -220,14 +220,14 @@
         "image_JWg6zC": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Logo_brand_e97b5a4f-fc49-4b84-a456-57cc7f2e5c89.png",
+            "image": "shopify://shop_images/Logo_YALE_e97b5a4f-fc49-4b84-a456-57cc7f2e5c89.png",
             "url": ""
           }
         },
         "image_Ryxq6p": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/logo_brand_boys_c4367969-21a3-496c-96f2-30924ed2c942.png",
+            "image": "shopify://shop_images/logo_yale_boys_c4367969-21a3-496c-96f2-30924ed2c942.png",
             "url": "shopify://collections/ninos"
           }
         },
@@ -319,7 +319,7 @@
         "Video_link": "https://www.youtube.com/embed/ByA0pWYpenQ?si=LoQ9sO4ufFxEGZ3A",
         "title": "La aventura comienza en familia,",
         "subtitle": "¡Sé + Tú!",
-        "description": "Disfruta de la comodidad y estilo de brand junto a tus pequeños. Visita nuestro Blog para inspiración, consejos y tendencias para que destaques y saques lo mejor de ti esta temporada.",
+        "description": "Disfruta de la comodidad y estilo de Yale junto a tus pequeños. Visita nuestro Blog para inspiración, consejos y tendencias para que destaques y saques lo mejor de ti esta temporada.",
         "button": "Visitar Blog",
         "url": "shopify://blogs/blog"
       }

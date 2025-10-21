@@ -1529,7 +1529,7 @@ details[open] > .share-button__fallback {
 
 .field__label,
 .customer .field label {
-  font-family: Ubuntu, Helvetica, sans-serif;
+  font-family: "Museosans 500", Verdana, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 18px;
@@ -1731,7 +1731,7 @@ input[type='checkbox'] {
   flex-grow: 1;
   -webkit-appearance: none;
   appearance: none;
-  font-family: Ubuntu, Helvetica, sans-serif;
+  font-family: "Museosans 500", Verdana, sans-serif;
 }
 
 .quantity__button {
@@ -1746,11 +1746,11 @@ input[type='checkbox'] {
   justify-content: center;
   color: #262626;
   padding: 0;
-  font-family: Ubuntu, Helvetica, sans-serif;
+  font-family: "Museo 300", Verdana, sans-serif;
   font-weight: 400;
 }
 .quantity__button:hover {
-    background-color: var(--brand-blue);
+    background-color: var(--yale-blue);
     color: #fff;
 }
 
@@ -3382,7 +3382,7 @@ details-disclosure > details {
   }
 
   .quantity__button:hover {
-    background-color: var(--brand-blue);
+    background-color: var(--yale-blue);
     color: #fff;
   }
   

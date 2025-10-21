@@ -1,57 +1,50 @@
 {% if section.blocks != blank %}
 
-<div class="secccategorias">
-  <div class="custom-container">
+  <div class="secccategorias">
+    <div class="custom-container">
 
-    <div class="titlecontainer">
-      <h2 class="secctitle">{{ section.settings.title }}</h2>
-    </div>
-
-    <div class="carruselhtml w-embed">
-      <div class="owl-carousel marcasbrandowl owl-theme" id="sync2">
-
-        {% for block in section.blocks %}
-        <a href="{{ block.settings.url }}" class="catelink linea w-inline-block">
-          <img src="{{ block.settings.image |  image_url }}" alt="{{ block.settings.image.alt }}"
-            class="imgiconslider brand">
-        </a>
-        {% endfor %}
-
+      <div class="titlecontainer">
+        <h2 class="secctitle">{{ section.settings.title }}</h2>
       </div>
-    </div>
 
+      <div class="carruselhtml w-embed">
+        <div class="owl-carousel marcasyaleowl owl-theme" id="sync2">
+
+          {% for block in section.blocks %}
+            <a href="{{ block.settings.url }}" class="catelink linea w-inline-block">
+              <img  src="{{ block.settings.image |  image_url }}" alt="{{ block.settings.image.alt }}" class="imgiconslider brand">
+            </a>
+          {% endfor %}
+
+        </div>
+      </div>
+      
+    </div>
   </div>
-</div>
 
 {% else %}
+  
+  <div class="secccategorias">
+    <div class="custom-container">
 
-<div class="secccategorias">
-  <div class="custom-container">
-
-    <div class="titlecontainer">
-      <h2 class="secctitle">COMPRA POR LÍNEA</h2>
-    </div>
-
-    <div class="carruselhtml w-embed">
-      <div class="owl-carousel marcasbrandowl owl-theme">
-        <a href="#" class="catelink linea w-inline-block"><img src="{{ " logo_brand_classic.png" | asset_url }}"
-            class="imgiconslider brand"></a>
-        <a href="#" class="catelink linea w-inline-block"><img src="{{ " logo_collection-copy-3.png" | asset_url }}"
-            class="imgiconslider brand"></a>
-        <a href="#" class="catelink linea w-inline-block"><img src="{{ " logo_brand_boys.png" | asset_url }}"
-            class="imgiconslider brand"></a>
-        <a href="#" class="catelink linea w-inline-block"><img src="{{ " logo_brand_baby_boys.png" | asset_url }}"
-            class="imgiconslider brand"></a>
-        <a href="#" class="catelink linea w-inline-block"><img src="{{ " logo_collection.png" | asset_url }}"
-            class="imgiconslider brand"></a>
-        <a href="#" class="catelink linea w-inline-block"><img src="{{ " logo_Sansabelt_brand.png" | asset_url }}"
-            class="imgiconslider brand"></a>
+      <div class="titlecontainer">
+        <h2 class="secctitle">COMPRA POR LÍNEA</h2>
       </div>
+
+      <div class="carruselhtml w-embed">
+        <div class="owl-carousel marcasyaleowl owl-theme">
+          <a href="#" class="catelink linea w-inline-block"><img  src="{{ "logo_yale_classic.png" | asset_url }}" class="imgiconslider brand"></a>
+          <a href="#" class="catelink linea w-inline-block"><img  src="{{ "logo_collection-copy-3.png" | asset_url }}" class="imgiconslider brand"></a>
+          <a href="#" class="catelink linea w-inline-block"><img  src="{{ "logo_yale_boys.png" | asset_url }}" class="imgiconslider brand"></a>
+          <a href="#" class="catelink linea w-inline-block"><img  src="{{ "logo_yale_baby_boys.png" | asset_url }}" class="imgiconslider brand"></a>
+          <a href="#" class="catelink linea w-inline-block"><img  src="{{ "logo_collection.png" | asset_url }}" class="imgiconslider brand"></a>
+          <a href="#" class="catelink linea w-inline-block"><img  src="{{ "logo_Sansabelt_yale.png" | asset_url }}" class="imgiconslider brand"></a>
+        </div>
+      </div>
+      
     </div>
-
   </div>
-</div>
-
+  
 {% endif %}
 
 
@@ -63,12 +56,12 @@
 "templates": ["index"]
 },
 "settings": [
-{
-"type": "text",
-"id": "title",
-"label": "Titulo de seccion",
-"default": "COMPRA POR LÍNEA"
-}
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Titulo de seccion",
+    "default": "COMPRA POR LÍNEA"
+  }
 ],
 "max_blocks": 10,
 "blocks": [
@@ -76,16 +69,16 @@
 "type": "image",
 "name": "Coleccion",
 "settings": [
-{
-"type": "image_picker",
-"id": "image",
-"label": "Imagen de la coleccion"
-},
-{
-"type": "url",
-"id": "url",
-"label": "URL de la coleccion"
-}
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Imagen de la coleccion"
+  },
+  {
+    "type": "url",
+    "id": "url",
+    "label": "URL de la coleccion"
+  }
 ]
 }
 ],

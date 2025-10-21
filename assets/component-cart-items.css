@@ -150,7 +150,7 @@ cart-remove-button .button:not([disabled]):hover {
 cart-remove-button .icon-remove {
   height: 3rem;
   width: 3rem;
-  color: var(--brand-blue);
+  color: var(--yale-blue);
   margin-top: 5px;
 }
 

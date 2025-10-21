@@ -1,0 +1,97 @@
+<div class="container-legal">
+  <div class="titlecontainer">
+    <h1 class="secctitle red">VENTAS INSTITUCIONALES</h1>
+    <div class="linetitle"></div>
+  </div>
+  <div class="storestxt left">En YALE nos interesa escucharte, si tienes alguna puedes ponerte en contacto con nosotros a través del siguiente formulario para dar seguimiento a tu solicitud.</div>
+  <div class="containerventas">
+    <div class="contactoform w-form">
+
+    {% form 'contact' %}
+      <input type="hidden" name="contact[Asunto]" value="Venta Institucional">
+      <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">
+        <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33e-fcaee9f0" class="w-layout-cell">
+          <label for="name" class="labelcontacto">Nombre completo*</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[Nombre]" data-name="Name" placeholder="" type="text" id="name" required="">
+        </div>
+        <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33f-fcaee9f0" class="w-layout-cell">
+          <label for="name-2" class="labelcontacto">Empresa</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[Empresa]" data-name="Name 2" placeholder="" type="text" id="name-2">
+        </div>
+      </div>
+
+      <div id="w-node-_599a0ad5-6f23-fb78-6eb4-7f69549bde28-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">
+        <div id="w-node-_599a0ad5-6f23-fb78-6eb4-7f69549bde29-fcaee9f0" class="w-layout-cell">
+          <label for="email" class="labelcontacto">Correo electrónico*</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[email]" data-name="Email" placeholder="" type="email" id="email" required="">
+        </div>
+        <div id="w-node-_599a0ad5-6f23-fb78-6eb4-7f69549bde2a-fcaee9f0" class="w-layout-cell">
+          <label for="phone" class="labelcontacto">Teléfono*</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[telefono]" data-name="phone" placeholder="" type="tel" id="phone" required="">
+        </div>
+      </div>
+
+      <div id="w-node-f15d3218-4013-3ce2-3474-03d13dc0cb81-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">
+
+        <div id="w-node-f15d3218-4013-3ce2-3474-03d13dc0cb82-fcaee9f0" class="w-layout-cell">
+          <label for="email-2" class="labelcontacto">Estoy interesado en</label>
+          <div class="containerchecks">
+            <label class="w-checkbox checkventas">
+              <div class="w-checkbox-input w-checkbox-input--inputType-custom formoptioncheck"></div>
+              <input type="checkbox" id="checkbox-3" name="contact[Interes]" value="Camisas" data-name="Checkbox 3" style="opacity:0;position:absolute;z-index:-1">
+              <span class="checklabel w-form-label" for="checkbox-3">Camisas</span>
+            </label>
+            <label class="w-checkbox checkventas">
+              <div class="w-checkbox-input w-checkbox-input--inputType-custom formoptioncheck"></div>
+              <input type="checkbox" id="checkbox-3" name="contact[Interes]" value="Pantalones" data-name="Checkbox 3" style="opacity:0;position:absolute;z-index:-1">
+              <span class="checklabel w-form-label" for="checkbox-3">Pantalones</span>
+            </label>
+            <label class="w-checkbox checkventas">
+              <div class="w-checkbox-input w-checkbox-input--inputType-custom formoptioncheck"></div>
+              <input type="checkbox" id="checkbox-3" name="contact[Interes]" value="Playeras" data-name="Checkbox 3" style="opacity:0;position:absolute;z-index:-1">
+              <span class="checklabel w-form-label" for="checkbox-3">Playeras</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="w-node-f15d3218-4013-3ce2-3474-03d13dc0cb86-fcaee9f0" class="w-layout-cell">
+          <label for="field-2" class="labelcontacto">Número aproximado de piezas</label>
+          <select id="field-2" name="contact[Cantidad]" data-name="Field 2" class="contactoinput w-select">
+            <option value="">Selecciona una opción</option>
+            <option value="-50">0 - 50 piezas</option>
+            <option value="+50">50 - 100 piezas</option>
+            <option value="200">100 - 400 piezas</option>
+            <option value="+500">500 - 1000 piezas</option>
+          </select></div>
+      </div>
+      
+      <label for="field-3" class="labelcontacto">Deja un mensaje breve (opcional)</label>
+      <textarea placeholder="Escribe aquí tu mensaje" maxlength="5000" id="field-3" name="contact[Mensaje]" data-name="Field 3" class="contactoinput txtarea w-input"></textarea>
+      <input type="submit" data-wait="Please wait..." class="loginpopbtn w-button" value="Enviar mensaje">
+      <label class="w-checkbox accept-tyc left">
+        <div class="w-checkbox-input w-checkbox-input--inputType-custom logincheck dark"></div><input type="checkbox" name="checkbox-2" id="checkbox-2" data-name="Checkbox 2" required="" style="opacity:0;position:absolute;z-index:-1" oninvalid="this.setCustomValidity('Marque esta casilla si desea continuar')" ><span class="w-form-label" for="checkbox-2">
+          <a href="/pages/terminos-y-condiciones" class="labelcheck-tyc pagina">Acepto Términos y Condiciones</a>
+        </span>
+      </label>
+  
+    {% endform %}
+
+    </div>
+  </div>
+</div>
+
+{% schema  %}
+{
+  "name": "Ventas institucionales",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Ventas institucionales"
+    }
+  ]
+}
+{% endschema %}
+

@@ -81,7 +81,7 @@ variant-selects {
 
 .product-form__input--pill input[type='radio']:disabled + label,
 .product-form__input--pill input[type='radio'].disabled + label {
-  border-color: var(--brand-grey);
+  border-color: var(--yale-grey);
   color: #bebebe;
   text-decoration: line-through;
 }

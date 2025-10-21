@@ -1,5 +1,5 @@
 .drawer,.drawer__footer *{
-  font-family: Ubuntu, Helvetica, sans-serif;
+  font-family: "Museosans 500", Verdana, sans-serif;
 }
 
 .drawer {
@@ -404,7 +404,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   color: #000;
   margin: 0 auto;
   padding: 7px 5px;
-  font-family: Ubuntu, Helvetica, sans-serif;
+  font-family: "Museosans 700", Verdana, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: 13px;
@@ -421,7 +421,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 }
 
 .cart-drawer .cart-item__details * {
-  font-family: Ubuntu, Helvetica, sans-serif;
+  font-family: "Museosans 300", Verdana, sans-serif;
   font-size: 13px;
   font-weight: 400;
   height: auto;

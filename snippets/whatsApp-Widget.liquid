@@ -1,0 +1,5 @@
+{% if settings.whatsappShow and settings.whatsapp != blank %}
+  <a href="{{ settings.whatsapp }}" target="_blank" class="whatsapplink w-inline-block">
+    <img src="{{ "whatsapp_icon.png" | asset_url }}" class="image">
+  </a>
+{% endif %}

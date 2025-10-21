@@ -14,22 +14,22 @@
     "newsletter_mYcngE": {
       "type": "Newsletter",
       "settings": {
-        "image": "shopify://shop_images/icon_brand_red.svg",
-        "title": "ÚNETE A LA COMUNIDAD brand",
+        "image": "shopify://shop_images/icon_Yale_red.svg",
+        "title": "ÚNETE A LA COMUNIDAD YALE",
         "description": "Suscríbete al boletín, conoce los nuevos lanzamientos y obtén descuentos y promociones especiales."
       }
     },
     "footer": {
       "type": "footer",
       "settings": {
-        "logo": "shopify://shop_images/brand_logo_Color.svg",
+        "logo": "shopify://shop_images/Yale_logo_Color.svg",
         "menu_1": "footer",
         "menu_2": "ayuda",
         "menu_3": "mi-tienda",
-        "email": "ventasonline@brand.com.mx",
-        "emailUrl": "mailto:ventasonline@brand.com.mx?subject=Ventas%20Empresariales%20brand",
-        "email2": "ecommerce@brand.com.mx",
-        "emailUrl2": "mailto:ecommerce@brand.com.mx?subject=Tienda%20online%20brand",
+        "email": "ventasonline@yale.com.mx",
+        "emailUrl": "mailto:ventasonline@yale.com.mx?subject=Ventas%20Empresariales%20YALE",
+        "email2": "ecommerce@yale.com.mx",
+        "emailUrl2": "mailto:ecommerce@yale.com.mx?subject=Tienda%20online%20YALE",
         "phonelabel": "55 5804 42 42 Ext.1416",
         "phone": "55 5804 42 42",
         "certificateUrl": "https://distintivodigital.profeco.gob.mx/consulta.php?serie=DA21YFE3411223",

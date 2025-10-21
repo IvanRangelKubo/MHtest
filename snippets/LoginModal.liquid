@@ -1,0 +1,95 @@
+  <!--*LoginModal-->
+  <div class="loginmodal" data-ix="hidden-loginmodal">
+    <div class="containertabs-login">
+
+      <div class="logomodalreg">
+        <img  src="{{ "icon_Yale_red.svg" | asset_url }}" class="iconlogin">
+      </div>
+
+      <a href="#" class="btn-close-modal w-button" data-ix="close-loginmodal">X</a>
+
+      <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="regtabspop w-tabs">
+
+        <div class="registrotabs-menu w-tab-menu">
+          <a data-w-tab="Tab 1" class="logintab w-inline-block w-tab-link w--current">
+            <div>Registrarme</div>
+          </a>
+          <a data-w-tab="Tab 2" class="logintab w-inline-block w-tab-link">
+            <div>Ya soy cliente</div>
+          </a>
+        </div>
+
+        <div class="w-tab-content">
+          <div data-w-tab="Tab 1" class="infotab w-tab-pane w--tab-active">
+
+            <div class="loginpopform w-form">
+
+              {% form 'create_customer', class: 'contenidoformlog', return_to: routes.account_url %}
+                <p class="txtlogin">Regístrate y obtén descuentos y promociones especiales</p>
+                <input class="loginreg-field w-input" placeholder="Nombre (s)*" maxlength="256" name="customer[first_name]" type="text" required="" >
+                <input class="loginreg-field w-input" placeholder="Apellido*" maxlength="256" name="customer[last_name]" type="text" required="" >
+                <input class="loginreg-field mail w-input" placeholder="Correo electrónico*" maxlength="256" name="customer[email]" type="email" required="" {% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="RegisterForm-email-error" {% endif %} >
+                  {%- if form.errors contains 'email' -%}
+                    <span id="RegisterForm-email-error" class="form__message">
+                      {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+                    </span>
+                  {%- endif -%}
+                <input class="loginreg-field pass w-input" placeholder="Contraseña*" maxlength="256" name="customer[password]" type="password" required="" {% if form.errors contains 'password' %} aria-invalid="true" aria-describedby="RegisterForm-password-error" {% endif %} >
+                  {%- if form.errors contains 'password' -%}
+                    <span id="RegisterForm-password-error" class="form__message">
+                      {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
+                    </span>
+                  {%- endif -%}
+                <div class="labelcheck-tyc">*Campos requeridos</div>
+
+                <input type="submit" data-wait="" class="loginpopbtn full w-button" value="Registrarme">
+
+                <label class="w-checkbox accept-tyc">
+                  <div class="w-checkbox-input w-checkbox-input--inputType-custom logincheck"></div>
+                  <input type="checkbox" name="checkbox-2" id="checkbox-2" data-name="Checkbox 2" required="" style="opacity:0;position:absolute;z-index:-1" oninvalid="this.setCustomValidity('Marque esta casilla si desea continuar')">
+                  <span class="w-form-label" for="checkbox-2">
+                    <a href="/pages/terminos-y-condiciones" class="labelcheck-tyc">Acepto términos y condiciones</a>
+                  </span>
+                </label>
+              {% endform %}
+
+            </div>
+
+          </div>
+
+          <div data-w-tab="Tab 2" class="infotab w-tab-pane">
+            <div class="loginpopform w-form">
+
+              {% form 'customer_login', class: 'contenidoformlog', return_to: routes.account_url %}
+                <p class="txtlogin popup">Si ya tienes una cuenta con nosotros, inicia sesión aquí</p>
+                <input class="loginreg-field mail w-input" placeholder="Correo electrónico*" maxlength="256" name="customer[email]" autocomplete="email" autocorrect="off" autocapitalize="off" type="email" required="" {% if form.errors contains 'form' %} aria-invalid="true" {% endif %} >
+                <input class="loginreg-field pass w-input" placeholder="Contraseña*" maxlength="256" name="customer[password]" autocomplete="current-password" type="password" required="" {% if form.errors contains 'form' %} aria-invalid="true" {% endif %} >
+                <input type="submit" data-wait="Please wait..." class="loginpopbtn full w-button" value="Iniciar sesión">
+                <a href="{{ routes.account_login_url }}" style="color: #ffff;" class="frgtpassword">Olvidé mi contraseña</a>
+                {%- if form.errors -%}
+                  <div class="form-error-customer">
+                    <h2 class="form__message error" tabindex="-1" autofocus>
+                      <span class="visually-hidden">{{ 'accessibility.error' | t }}
+                      </span>
+                      <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 13 13">
+                        <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2" />
+                        <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7" />
+                        <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white" />
+                        <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                      </svg>
+                      {{ 'templates.contact.form.error_heading' | t }}
+                    </h2>
+                    {{ form.errors | default_errors }}
+                  </div> 
+                {%- endif -%} 
+              {% endform %}
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!--*LoginModal-->
