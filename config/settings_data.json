@@ -374,21 +374,7 @@
       "show_vendor": false,
       "show_cart_note": false,
       "cart_drawer_collection": "",
-      "cart_color_scheme": "scheme-1",
-      "sections": {
-        "main-password-header": {
-          "type": "main-password-header",
-          "settings": {
-            "color_scheme": "scheme-1"
-          }
-        },
-        "main-password-footer": {
-          "type": "main-password-footer",
-          "settings": {
-            "color_scheme": "scheme-1"
-          }
-        }
-      }
+      "cart_color_scheme": "scheme-1"
     }
   }
 }
