@@ -395,7 +395,7 @@
   <a class="skip-to-content-link button visually-hidden" href="#MainContent">
     {{ 'accessibility.skip_to_text' | t }}
   </a>
-  {%- render 'cart-drawer' -%}
+  {% render 'cart-drawer' %}
   <div data-w-id="87a25407-152c-71f3-41d0-66c4ea8a835a" class="sectionheader">
     {% sections 'header-group'%}
   </div>
@@ -403,7 +403,7 @@
   <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
     {{ content_for_layout }}
   </main>
-  {% render 'whatsApp-Widget' %}
+  
   {% sections 'footer-group' %}
 
 
