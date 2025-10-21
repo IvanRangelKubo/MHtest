@@ -1,0 +1,172 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Moto Helmets by Kubo Digital",
+    "theme_version": "1.0.0",
+    "theme_author": "Ventiapp",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Imagen del Favicon",
+        "info": "Se reducira a 32x32px",
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.typography.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__1.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_header_font.label",
+        "info": "t:settings_schema.typography.settings.type_header_font.info"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.heading_scale.label",
+        "default": 100
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__2.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_body_font.label",
+        "info": "t:settings_schema.typography.settings.type_body_font.info"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 100,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.body_scale.label",
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.social-media.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.social-media.settings.header.content"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
+        "placeholder": "t:settings_schema.social-media.settings.social_facebook_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "t:settings_schema.social-media.settings.social_instagram_link.label",
+        "placeholder": "t:settings_schema.social-media.settings.social_instagram_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "t:settings_schema.social-media.settings.social_tiktok_link.label",
+        "placeholder": "t:settings_schema.social-media.settings.social_tiktok_link.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.currency_format.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.currency_format.settings.content"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.currency_format.settings.paragraph"
+      },
+      {
+        "type": "checkbox",
+        "id": "currency_code_enabled",
+        "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Etiqueta producto nuevo",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Tiempo para considerar nuevo el producto"
+      },
+      {
+        "type": "paragraph",
+        "content": "Especificar el numero de dias en los que un producto se puede considerar nuevo, de esta manera se le estara colocando una etiqueta en el sitio. "
+      },
+      {
+        "type": "number",
+        "id": "new_product",
+        "label": "Dias",
+        "default": 30
+      }
+    ]
+  },
+  {
+    "name": "Alerta envío gratis",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Monto minimo de envío gratis"
+      },
+      {
+        "type": "paragraph",
+        "content": "Especificar el monto minimo para colocar una alerta de envío gratis en el carrito lateral."
+      },
+      {
+        "type": "number",
+        "id": "shipping_free",
+        "label": "Monto",
+        "default": 499
+      }
+    ]
+  },
+  {
+    "name": "Numero de Whatsapp",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Ingrese la liga de contacto asociado a whatsapp para la comunicacion con clientes. "
+      },
+      {
+        "type": "url",
+        "id": "whatsapp",
+        "label": "Liga de whatsapp"
+      }
+      ,{
+        "type": "checkbox",
+        "id": "whatsappShow",
+        "label": "Mostrar elemento flotante",
+        "default": true
+      }
+    ]
+  }
+]

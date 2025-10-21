@@ -1,0 +1,94 @@
+{% if section.blocks != blank %}
+<div class="secccategorias">
+  <div class="custom-container">
+
+    <div class="titlecontainer">
+      <h1 class="secctitle">{{ section.settings.title }}</h1>
+    </div>
+
+    <div class="carruselhtml w-embed">
+      <div class="owl-carousel categoriasbrandowl owl-theme" id="sync2">
+
+        {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="catelink w-inline-block">
+          <img src="{{ block.settings.icon |  image_url  }}" alt="{{ block.settings.name }}" class="imgiconslider">
+          <div class="catename">{{ block.settings.name }}</div>
+        </a>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% else %}
+<div class="secccategorias">
+  <div class="custom-container">
+
+    <div class="titlecontainer">
+      <h2 class="secctitle">COMPRA POR CATEGORÍA</h2>
+    </div>
+
+    <div class="carruselhtml w-embed">
+      <div class="owl-carousel categoriasbrandowl owl-theme" id="sync2">
+
+        {% for i in (1..4) %}
+        {% assign product_image = 'product-apparel-' | append: forloop.index %}
+        <a href="" class="catelink w-inline-block">
+          {{ product_image | placeholder_svg_tag: 'imgiconslider' }}
+          <div class="catename">Coleccion</div>
+        </a>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+"name": "Iconos de Categorias",
+"enabled_on": {
+"templates": ["index"]
+},
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Titulo de Seccion",
+"default": "COMPRA POR CATEGORÍA"
+}
+],
+"max_blocks": 10,
+"blocks": [
+{
+"type": "icon",
+"name": "Icono",
+"settings": [
+{
+"type": "image_picker",
+"id": "icon",
+"label": "Icono"
+},
+{
+"type": "text",
+"id": "name",
+"label": "Nombre de Categoria"
+},
+{
+"type": "url",
+"id": "link",
+"label": "Link"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Iconos de Categorias"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,139 @@
+{%- liquid
+  case section.settings.sort
+    when 'products_high' or 'products_low'
+      assign collections = collections | sort: 'all_products_count'
+    when 'date' or 'date_reversed'
+      assign collections = collections | sort: 'published_at'
+  endcase
+
+  if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+    assign collections = collections | reverse
+  endif
+
+  assign moduloResult = 28 | modulo: 1
+  assign paginate_by = 30
+  if moduloResult == 0
+    assign paginate_by = 28
+  endif
+-%}
+
+<div class="collection-list">
+
+    <div class="custom-container">
+      <div class="contitlelisting">
+        <h1 class="listingtitle">{{ section.settings.title | escape }}</h1>
+      </div>
+    </div>
+      
+    <div class="secc-productos">
+      {%- paginate collections by paginate_by -%}
+        {%- for collection in collections -%}
+          <div class="custom-container">
+
+            <div class="titlecontainer">
+              <a href="{{ collection.url }}" class="secctitle">{{- collection.title | escape -}}</a>
+            </div>
+
+            <div class="html-productos-owl w-embed">
+              <div class="owl-carousel productosowl owl-theme" id="sync2">
+                {% for product in collection.products limit: 8 %}
+                  {% render 'card-product',
+                  card_product: product,
+                  show_quick_add: false,
+                  section_id: section.id
+                  %}
+                {% endfor %}
+              </div>
+            </div>
+
+          </div>
+        {%- endfor -%}
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-list-collections.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.main-list-collections.settings.title.label",
+      "default": "Collections"
+    },
+    {
+      "type": "select",
+      "id": "sort",
+      "options": [
+        {
+          "value": "alphabetical",
+          "label": "t:sections.main-list-collections.settings.sort.options__1.label"
+        },
+        {
+          "value": "alphabetical_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__2.label"
+        },
+        {
+          "value": "date_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__3.label"
+        },
+        {
+          "value": "date",
+          "label": "t:sections.main-list-collections.settings.sort.options__4.label"
+        },
+        {
+          "value": "products_high",
+          "label": "t:sections.main-list-collections.settings.sort.options__5.label"
+        },
+        {
+          "value": "products_low",
+          "label": "t:sections.main-list-collections.settings.sort.options__6.label"
+        }
+      ],
+      "default": "alphabetical",
+      "label": "t:sections.main-list-collections.settings.sort.label"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  $(document).ready(function(){
+  $(".productosowl").owlCarousel({
+    loop:false,
+    margin:3,    
+    navRewind: true,
+    autoWidth:false,
+    autoplay:false,
+    animateOut: 'fadeOut',
+    slideSpeed: 4000,
+	navText: ['<div class="mainslider-arrow w-slider-arrow-left"><div class="w-icon-slider-left"></div></div>','<div class="mainslider-arrow w-slider-arrow-right"><div class="w-icon-slider-right"></div></div>'],
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:2,
+            nav:true,
+          dots:false
+        },
+        480:{
+            items:2,
+            nav:true,
+          	dots:false
+        },
+      	767:{
+            items:3,
+            nav:true,
+          dots:false
+        },
+		991:{
+            items:4,
+            nav:true,
+          dots:false
+        }
+    }
+});
+});  
+</script>

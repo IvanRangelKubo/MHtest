@@ -1,0 +1,137 @@
+<div class="custom-container">   
+  <div class="containermicuenta">
+
+    <div class="titlecontainer">
+      <h1 class="secctitle red">MIS PEDIDOS</h1>
+      <div class="linetitle"></div>
+    </div>
+
+    <a href="{{ routes.account_logout_url }}" class="logoutbutton btnmicuenta w-button" >{{ 'customer.log_out' | t }}</a>
+
+    <div class="row-pedidos w-row">
+
+      <div class="w-col w-col-3">
+
+        <div class="contdetail-account">
+          <h4 class="titles-micuenta">Direcciones</h4>
+        </div>
+
+        <div class="cont-infodirecc w-clearfix">
+          <div class="infodireccion">
+            {% if customer.default_address %}
+              <p>MI DIRECCIÓN<br>
+                  {{ customer.default_address.address1 }} <br>
+                  {{ customer.default_address.zip }}, {{ customer.default_address.city }}, {{
+                  customer.default_address.province }}<br>
+                  {{ customer.default_address.country }}
+              </p>
+            {% endif %}
+          </div>
+          <a href="{{ routes.account_addresses_url }}" class="btndirecciones w-button">{{'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+        </div>
+
+      </div>
+
+      <div class="w-col w-col-9">
+        {% paginate customer.orders by 20 %}
+          {% if customer.orders.size > 0 %}
+            <div class="container-list-pedido">
+              <h4 class="titles-micuenta">{{ 'customer.orders.title' | t }}</h4>
+    
+              <div class="rowtitlepedidos w-row">
+                <div class="w-col w-col-2 w-col-small-2">
+                  <div class="titlecol-pedido">{{ 'customer.orders.order_number' | t }}</div>
+                </div>
+                <div class="w-col w-col-10 w-col-small-10">
+                  <div class="w-row">
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <div class="titlecol-pedido">{{ 'customer.orders.date' | t }}</div>
+                    </div>
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <div class="titlecol-pedido">{{ 'customer.orders.fulfillment_status' | t }}</div>
+                    </div>
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <div class="titlecol-pedido">{{ 'customer.orders.payment_status' | t }}</div>
+                    </div>
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <div class="titlecol-pedido">{{ 'customer.orders.total' | t }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {% for order in customer.orders %}
+                <div class="rowpedido w-row">
+                  <div class="w-col w-col-2 w-col-small-2">
+                    <a href="{{ order.customer_url }}" class="pedidonumero">{{ order.name }}</a>
+                  </div>
+                  <div class="w-col w-col-10 w-col-small-10">
+                    <div class="infopedido-datos w-row">
+                      <div class="w-col w-col-3">
+                        <div class="infopedido-list">{{ order.created_at | time_tag: format: 'date' }}</div>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <div class="infopedido-list">{{ order.fulfillment_status_label }}</div>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <div class="infopedido-list">{{ order.financial_status_label }}</div>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <div class="infopedido-list">{{ order.total_price | money_with_currency }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+              
+            </div>
+          {% else %}
+          <div class="container-list-pedido">
+
+            <h4 class="titles-micuenta">{{ 'customer.orders.title' | t }}</h4>
+            
+            <div class="rowtitlepedidos w-row">
+              <div class="w-col w-col-2 w-col-small-2">
+                <div class="titlecol-pedido">{{ 'customer.orders.order_number' | t }}</div>
+              </div>
+              <div class="w-col w-col-10 w-col-small-10">
+                <div class="w-row">
+                  <div class="w-col w-col-3 w-col-small-3">
+                    <div class="titlecol-pedido">{{ 'customer.orders.date' | t }}</div>
+                  </div>
+                  <div class="w-col w-col-3 w-col-small-3">
+                    <div class="titlecol-pedido">{{ 'customer.orders.fulfillment_status' | t }}</div>
+                  </div>
+                  <div class="w-col w-col-3 w-col-small-3">
+                    <div class="titlecol-pedido">{{ 'customer.orders.payment_status' | t }}</div>
+                  </div>
+                  <div class="w-col w-col-3 w-col-small-3">
+                    <div class="titlecol-pedido">{{ 'customer.orders.total' | t }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="rowpedido w-row">
+              <p class="notorders infopedido-list">{{ 'customer.orders.none' | t }}</p>
+            </div>
+
+          </div>
+          {% endif %}
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination' %}
+          {%- endif -%}
+        {% endpaginate %}
+      </div>
+
+    </div>
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-account.name",
+  "settings": []
+}
+{% endschema %}

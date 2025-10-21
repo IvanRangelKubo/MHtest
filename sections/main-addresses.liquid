@@ -1,0 +1,247 @@
+<script src="{{ 'customer.js' | asset_url }}" defer></script> 
+{%- paginate customer.addresses by 5 -%} 
+
+<div class="custom-container" data-customer-addresses>
+  <div class="containermicuenta">
+    
+
+      <div class="titlecontainer">
+        <h1 class="secctitle red">MIS DIRECCIONES</h1>
+        <div class="linetitle"></div>
+      </div>
+
+      <p class="txtlogin pagina">Estas son las direcciones que has dado de alta para envíos o facturación.</p>
+
+      <div data-address style="text-align:center; margin-left: 5px; " >
+
+        <div class="cbuttons">
+          <a href="{{ routes.account_url }}" class="btnmicuenta w-button" id="backAddressbutt" >Regresar</a>
+          <button type="button" aria-expanded="false" data-form="AddAddress" aria-controls="AddAddress" class="addAddressbutt action_new_addres btnmicuenta w-button" id="addAddressbutt">
+            Agregar dirección
+          </button>
+        </div>
+
+      </div>
+
+      <div class="custom-container hide" id="AddAddress">
+        <div class="loginpopform w-form containerventas"> 
+          {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading', class: 'contenidoformlog' -%}
+            <h2 class="titles-micuenta"  id="AddressNewHeading">Nueva direccion</h2>
+            <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">   
+              <div class="w-layout-cell">
+                <label class="txtlogin" for="AddressFirstNameNew"></label>
+                <input type="text" class="loginreg-field border w-input" id="AddressFirstNameNew" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t}}" required>
+              </div>          
+              <div class="w-layout-cell">
+              <label class="txtlogin" for="AddressLastNameNew"></label>
+                <input type="text" class="loginreg-field border w-input" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" required>  
+              </div>  
+            </div> 
+            <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">  
+              <div class="w-layout-cell">      
+              <label class="txtlogin" for=""></label>
+                <input type="text" class="loginreg-field border w-input" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}" required>       
+              </div>
+              <div class="w-layout-cell">
+                <label class="txtlogin" for=""></label>
+                <input type="text" class="loginreg-field border w-input" id="AddressAddress2New" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}" required>
+              </div>
+            </div>
+            <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout"> 
+              <div class="w-layout-cell"> 
+              <label class="txtlogin" for=""></label>
+                <input type="text" class="loginreg-field border w-input" id="AddressCityNew" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}" required>
+              </div>
+              <div class="w-layout-cell">
+                <label class="txtlogin" for="AddressZipNew"></label>
+                  <input type="text" class="loginreg-field border w-input" id="AddressZipNew" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}" required>
+              </div>
+            </div>
+            <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout"> 
+              <div class="w-layout-cell">
+                <div class="cont-labelinput">
+                  <label class="txtlogin selectt" for="AddressCountryNew"></label>
+                  <div class="select">
+                    <select id="AddressCountryNew" name="address[country]" data-default="{{ form.country }}" autocomplete="country" class="loginreg-field">
+                      <option value="Mexico" data-provinces="[[&quot;Aguascalientes&quot;,&quot;Aguascalientes&quot;],[&quot;Baja California&quot;,&quot;Baja California&quot;],[&quot;Baja California Sur&quot;,&quot;Baja California Sur&quot;],[&quot;Campeche&quot;,&quot;Campeche&quot;],[&quot;Chiapas&quot;,&quot;Chiapas&quot;],[&quot;Chihuahua&quot;,&quot;Chihuahua&quot;],[&quot;Ciudad de México&quot;,&quot;Ciudad de México&quot;],[&quot;Coahuila&quot;,&quot;Coahuila de Zaragoza&quot;],[&quot;Colima&quot;,&quot;Colima&quot;],[&quot;Durango&quot;,&quot;Durango&quot;],[&quot;Guanajuato&quot;,&quot;Guanajuato&quot;],[&quot;Guerrero&quot;,&quot;Estado de Guerrero&quot;],[&quot;Hidalgo&quot;,&quot;Estado de Hidalgo&quot;],[&quot;Jalisco&quot;,&quot;Jalisco&quot;],[&quot;Michoacán&quot;,&quot;Michoacán&quot;],[&quot;Morelos&quot;,&quot;Morelos&quot;],[&quot;México&quot;,&quot;Estado de México&quot;],[&quot;Nayarit&quot;,&quot;Nayarit&quot;],[&quot;Nuevo León&quot;,&quot;Nuevo León&quot;],[&quot;Oaxaca&quot;,&quot;Oaxaca&quot;],[&quot;Puebla&quot;,&quot;Puebla&quot;],[&quot;Querétaro&quot;,&quot;Querétaro&quot;],[&quot;Quintana Roo&quot;,&quot;Quintana Roo&quot;],[&quot;San Luis Potosí&quot;,&quot;San Luis Potosí&quot;],[&quot;Sinaloa&quot;,&quot;Sinaloa&quot;],[&quot;Sonora&quot;,&quot;Sonora&quot;],[&quot;Tabasco&quot;,&quot;Tabasco&quot;],[&quot;Tamaulipas&quot;,&quot;Tamaulipas&quot;],[&quot;Tlaxcala&quot;,&quot;Tlaxcala&quot;],[&quot;Veracruz&quot;,&quot;Veracruz&quot;],[&quot;Yucatán&quot;,&quot;Yucatán&quot;],[&quot;Zacatecas&quot;,&quot;Zacatecas&quot;]]"> México</option>
+                    </select>
+                  </div>
+                </div>
+                </div>
+              <div class="w-layout-cell"> 
+                <div class="cont-labelinput" id="AddressProvinceContainerNew" style="display: none">
+                  <label class="txtlogin selectt" for="AddressProvinceNew"></label>
+                  <div class="select">
+                    <select id="AddressProvinceNew" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1" class="loginreg-field"></select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout"> 
+              <div class="w-layout-cell"> 
+                <label class="txtlogin" for="AddressPhoneNew"></label>
+                  <input type="tel" class="loginreg-field border w-input" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}" required>
+              </div>
+            </div>
+            <div class="cont-labelinput deffault" display="block;">
+              {{ form.set_as_default_checkbox }}
+              <label class="labelcheck-tyc w-form-label  checkbox_address" style="text-align: left;" for="address_default_address_new">{{ 'customer.addresses.set_default' | t }}</label>
+            </div>
+            <div class="container-btn">
+              <input type="submit" value="{{ 'customer.addresses.add' | t }}" data-wait="" class="btn-heroslider loginpopbtn w-button">
+            <div class="cont-labelinput" style="margin-top:0px;width:fit-content;">
+              <button class="canceladdre frgtpassword action_new_addres" data-form="AddAddress"  type="reset" >{{ 'customer.addresses.cancel' | t }}</button>
+            </div>
+            </div>
+          {%- endform -%}
+        </div>
+      </div>
+
+      <div class="container-direcciones" id="direcciones_card"> 
+        {%- for address in customer.addresses -%} 
+          <div data-address class="direccion-container" id="direcciones_cards">
+
+            <div class="conticons-editadress w-clearfix">
+              <a href="#" id="EditFormButton_{{ address.id }}" aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}" aria-controls="EditAddress_{{ address.id }}" data-form="EditAddress_{{ address.id }}" aria-expanded="false" data-address-id="{{ address.id }}" class="action_addres btndirecciones editar w-button">{{ 'customer.addresses.edit' | t }}</a>
+              <button href="#" aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}" data-target="{{ address.url }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}" class="btndirecciones eliminar w-button">{{ 'customer.addresses.delete' | t }}</button>
+            </div>
+
+            <div class="infodireccion"> 
+              {%- if address == customer.default_address -%} Principal{%- endif -%} 
+              <br>{{ address | format_address }}
+            </div>
+
+          </div>
+
+        {%- endfor -%} 
+      </div>
+
+      <div class="custom container" id="direcciones_editor"> 
+        {%- for address in customer.addresses -%} 
+          <div class=" hide editaddress" id="EditAddress_{{ address.id }}">
+            
+
+           
+            <div class="loginpopform paginterna w-form containerventas"> 
+              {%- form 'customer_address', address, class: 'contenidoformlog' -%} 
+                <h2 class="titles-micuenta" id="AddressHeading">{{ 'customer.addresses.edit_address' | t }}</h2>
+                <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">
+                  <div class="w-layout-cel">
+                    <label class="txtlogin" for="AddressFirstName_{{ form.id }}"></label>
+                    <input type="text" class="loginreg-field border w-input" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}" required>
+                  </div>
+                  <div class="w-layout-cel">
+                    <label class="txtlogin" for="AddressLastName_{{ form.id }}"></label>
+                    <input type="text" class="loginreg-field border w-input" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" required>
+                  </div>
+                </div>
+                <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">
+                  <div class="w-layout-cell">
+                    <label class="txtlogin" for="AddressAddress1_{{ form.id }}"></label>
+                    <input type="text" class="loginreg-field border w-input" id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' |t }}" required>
+                  </div>
+                  <div class="w-layout-cell">
+                    <label class="txtlogin" for="AddressAddress2_{{ form.id }}"></label>
+                    <input type="text" class="loginreg-field border w-input" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' |t }}" required>
+                  </div>
+                </div>
+                <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">
+                  <div class="w-layout-cell">
+                    <label class="txtlogin" for="AddressCity_{{ form.id }}"></label>
+                    <input type="text" class="loginreg-field border w-input" id="AddressCity_{{ form.id }}" name="address[city]" value="{{ form.city }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.city' | t}}" required>
+                  </div>
+                  <div class="w-layout-cell">
+                    <label class="txtlogin" for="AddressZip_{{ form.id }}"></label>
+                    <input type="text" class="loginreg-field border w-input" id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t}}" required>
+                  </div>
+                </div>
+                <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">
+                  <div class="w-layout-cell"> 
+                    <div class="cont-labelinput">
+                      <label class="txtlogin selectt" for="AddressCountry_{{ form.id }}"></label>
+                      <div class="select">
+                        <select id="AddressCountry_{{ form.id }}" name="address[country]" data-address-country-select data-default="{{ form.country }}" data-form-id="{{ form.id }}" autocomplete="country" class="loginreg-field">
+                          <option value="Mexico" data-provinces="[[&quot;Aguascalientes&quot;,&quot;Aguascalientes&quot;],[&quot;Baja California&quot;,&quot;Baja California&quot;],[&quot;Baja California Sur&quot;,&quot;Baja California Sur&quot;],[&quot;Campeche&quot;,&quot;Campeche&quot;],[&quot;Chiapas&quot;,&quot;Chiapas&quot;],[&quot;Chihuahua&quot;,&quot;Chihuahua&quot;],[&quot;Ciudad de México&quot;,&quot;Ciudad de México&quot;],[&quot;Coahuila&quot;,&quot;Coahuila de Zaragoza&quot;],[&quot;Colima&quot;,&quot;Colima&quot;],[&quot;Durango&quot;,&quot;Durango&quot;],[&quot;Guanajuato&quot;,&quot;Guanajuato&quot;],[&quot;Guerrero&quot;,&quot;Estado de Guerrero&quot;],[&quot;Hidalgo&quot;,&quot;Estado de Hidalgo&quot;],[&quot;Jalisco&quot;,&quot;Jalisco&quot;],[&quot;Michoacán&quot;,&quot;Michoacán&quot;],[&quot;Morelos&quot;,&quot;Morelos&quot;],[&quot;México&quot;,&quot;Estado de México&quot;],[&quot;Nayarit&quot;,&quot;Nayarit&quot;],[&quot;Nuevo León&quot;,&quot;Nuevo León&quot;],[&quot;Oaxaca&quot;,&quot;Oaxaca&quot;],[&quot;Puebla&quot;,&quot;Puebla&quot;],[&quot;Querétaro&quot;,&quot;Querétaro&quot;],[&quot;Quintana Roo&quot;,&quot;Quintana Roo&quot;],[&quot;San Luis Potosí&quot;,&quot;San Luis Potosí&quot;],[&quot;Sinaloa&quot;,&quot;Sinaloa&quot;],[&quot;Sonora&quot;,&quot;Sonora&quot;],[&quot;Tabasco&quot;,&quot;Tabasco&quot;],[&quot;Tamaulipas&quot;,&quot;Tamaulipas&quot;],[&quot;Tlaxcala&quot;,&quot;Tlaxcala&quot;],[&quot;Veracruz&quot;,&quot;Veracruz&quot;],[&quot;Yucatán&quot;,&quot;Yucatán&quot;],[&quot;Zacatecas&quot;,&quot;Zacatecas&quot;]]"> México</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-layout-cell"> 
+                    <div class="cont-labelinput selectt" id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
+                      <label class="txtlogin" for="AddressProvince_{{ form.id }}"></label>
+                      <div class="select">
+                        <select id="AddressProvince_{{ form.id }}" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1" class="loginreg-field"></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_09264595-02cf-3e26-94bd-dc69a649a33d-fcaee9f0" class="w-layout-layout stackinstform wf-layout-layout">  
+                  <div class="w-layout-cell">
+                    <div class="cont-labelinput">
+                      <label class="txtlogin" for="AddressPhone_{{ form.id }}"></label>
+                      <input type="tel" class="loginreg-field border w-input" id="AddressPhone_{{ form.id }}" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t}}" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="cont-labelinput deffault" display="block;">
+                  {{ form.set_as_default_checkbox }}
+                  <label class="labelcheck-tyc w-form-label checkbox_address" style="text-align: left;" for="address_default_address_{{ form.id }}">
+                    {{ 'customer.addresses.set_default' | t }}
+                  </label>
+                </div>
+                <div class="container-btn">
+                <input type="submit" value="{{ 'customer.addresses.update' | t }}" data-wait="" class="loginpopbtn w-button "> 
+                </div>
+              {%- endform -%}
+            </div>
+          </div> 
+        {%- endfor -%}
+        {%- if paginate.pages > 1 -%}
+          {%- if paginate.parts.size > 0 -%} 
+            {% render 'pagination' %} 
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+
+  
+  </div>
+</div> 
+{%- endpaginate -%} 
+
+<script>
+  window.onload = () => {
+    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+  }
+</script>
+
+
+<script>
+  var editcards = document.getElementById("direcciones_card");
+  var btnadd = document.getElementById("addAddressbutt");
+  var btnback = document.getElementById("backAddressbutt");
+
+  $('.action_new_addres').click(function(evt) {
+    var idformaddres = $(this).data("form");
+    var containerform = document.getElementById(idformaddres);
+    editcards.classList.toggle("hide");
+    btnadd.classList.toggle("hide");
+    btnback.classList.toggle("hide");
+    containerform.classList.toggle("show");
+  });
+
+  $('.action_addres').click(function(evt) {
+    var idformaddres = $(this).data("form");
+    var containerform = document.getElementById(idformaddres);
+    editcards.classList.toggle("hide");
+    btnadd.classList.toggle("hide");
+    btnback.classList.toggle("hide");
+    containerform.classList.toggle("show");
+  });
+
+
+</script>
+
+<style>
+  .hide.show{
+  display:block}
+</style>

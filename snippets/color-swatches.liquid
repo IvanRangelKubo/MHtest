@@ -1,0 +1,23 @@
+<style>
+
+ .filter_Color .mobile-facets__label>.not-check {
+  background-color:#fff;
+  color: #fff
+}
+
+.filter_Color .mobile-facets__label>input[type=checkbox]:checked~.icon-checkmark{
+ color: #fff;
+}
+ {% for colorwatches in shop.metaobjects.colores_de_filtros.values %} 
+ 
+  .colorfilter_{{colorwatches.nombre_de_color| strip | replace: " ", "-"  }}.facet-checkbox>.not-check,.colorfilter_{{colorwatches.nombre_de_color| upcase | strip | replace: " ", "-"  }}.facet-checkbox>.not-check,.colorfilter_{{colorwatches.nombre_de_color| strip | replace: " ", "-"  }}.mobile-facets__label>.not-check,.colorfilter_{{colorwatches.nombre_de_color| upcase | strip | replace: " ", "-"  }}.mobile-facets__label>.not-check{
+   background-color:{{colorwatches.color}};
+   color:{{colorwatches.color}};
+  }
+  .colorfilter_{{colorwatches.nombre_de_color| strip | replace: " ", "-"  }}.facet-checkbox>input[type=checkbox]:checked~.icon-checkmark, .colorfilter_{{colorwatches.nombre_de_color| upcase | strip | replace: " ", "-"  }}.facet-checkbox>input[type=checkbox]:checked~.icon-checkmark, .colorfilter_{{colorwatches.nombre_de_color| strip | replace: " ", "-"  }}.mobile-facets__label>input[type=checkbox]:checked~.icon-checkmark, .colorfilter_{{colorwatches.nombre_de_color| upcase | strip | replace: " ", "-"  }}.mobile-facets__label>input[type=checkbox]:checked~.icon-checkmark{
+   color: {{colorwatches.color}};
+  }
+ 
+ {% endfor%}
+ 
+ </style>

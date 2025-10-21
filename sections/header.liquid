@@ -1,0 +1,167 @@
+<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+
+{% render 'LoginModal' %}
+
+<div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="custom-navbar w-nav">
+  <div class="custom-container navbar">
+
+    <div class="topelementsnav">
+      <div class="menu-button w-nav-button">
+        <div class="w-icon-nav-menu"></div>
+      </div>
+      <a href="{{ routes.root_url }}" class="logonav w-nav-brand">
+        <img src="{{ section.settings.logo |  image_url }}" alt="{{ shop.name }}" class="imglogo-nav">
+      </a>
+
+      <nav role="navigation" class="custom-navigationmenu w-nav-menu">
+        {% for link in section.settings.menu.links %}
+        {% if link.links != blank %}
+        <div data-hover="true" data-delay="0" class="customdrop-nav w-dropdown">
+          <div class="menunav-link drop w-dropdown-toggle">
+            <div class="icondropmenu w-icon-dropdown-toggle"></div>
+            <div>{{ link.title }}</div>
+          </div>
+          <nav class="regulardrop w-dropdown-list">
+            {% for childlink in link.links %}
+             <a href="{{childlink.url }}" class="regulardroplink w-dropdown-link {% if childlink.title contains '[RED]' %}destacado{% endif %}">{{ childlink.title | split: '[RED]'}}</a>
+            {% endfor %}
+          </nav>
+        </div>
+        {% else %}
+          <a href="{{ link.url }}" class="menunav-link w-nav-link">{{ link.title }}</a>    
+        {% endif %}
+        {% endfor %}
+        {% if section.settings.show_featured_link %}
+        <a href="{{ section.settings.featured_link_url }}" class="menunav-link rebajas w-nav-link">{{ section.settings.featured_link_text }}</a>
+        {% endif %}
+        <div class="extramenu-mobile"><img src="{{"icon_user-black.svg"| asset_url }}" class="icnomenu-mobile">
+          <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menunav-link mobile nav-link w-nav-link">MI CUENTA</a>
+        </div>
+      </nav>
+
+      <div class="cont-cartcontact">
+
+        <div href="#" class="linkicons-nav buscadormobile">
+          <img src="{{ 'icon_search_black.svg' | asset_url }}" alt="Search" class="icononav" data-ix="show-mobilesearch">
+          <div class="mobilesearch w-form" data-ix="hiddensearchmobile">
+            <form action="{{ routes.search_url }}" method="get" role="search" class="busqueda-formcot">
+              <div class="close-buscador" data-ix="close-mobilesarch">X</div>
+              <input class="input-buscador w-input" maxlength="256" name="q"  placeholder="Buscar" type="search" required>
+              <input type="submit" data-wait="Buscando..." class="buscarbtn w-button" value="Buscar">
+            </form>
+          </div>
+        </div>
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%} # {%- endif -%}" class="linkicons-nav mobile w-inline-block">
+          <img src="{{ 'icon_user-black.svg' | asset_url }}" alt="Cuenta de Usuario" class="icononav" {% unless customer %} data-ix="showloginmodal" {% endunless %}>
+        </a>
+        <div class="linkicons-nav" id="cart-icon-btn">
+          <img src="{{ 'icon_cart_black.svg' | asset_url }}" alt="Carrito de Compra" class="icononav">
+          <div class="qtynumber" id="cart-icon-bubble">{{ cart.item_count }}</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{%- liquid
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_block = true
+    endif
+  endfor
+-%}
+
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when '@app' -%}
+      {% render block %}
+  {%- endcase -%}
+{%- endfor -%}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "section-header",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo de la marca"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "header",
+      "content": "Link Destacado"
+    },
+    {
+      "type": "text",
+      "id": "featured_link_text",
+      "label": "Texto del link"
+    },
+    {
+      "type": "url",
+      "id": "featured_link_url",
+      "label": "URL del link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_link",
+      "default": true,
+      "label": "Mostrar link destacado"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

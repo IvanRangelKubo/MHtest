@@ -1,0 +1,112 @@
+<div class="container-legal">
+
+  <div class="titlecontainer">
+    <h1 class="secctitle red">CONTÁCTANOS</h1>
+    <div class="linetitle"></div>
+  </div>
+
+  <div class="storestxt left">En brand nos interesa escucharte, si tienes alguna puedes ponerte en contacto con nosotros
+    a través del siguiente formulario para dar seguimiento a tu solicitud.</div>
+
+  <div id="w-node-ccc2c89e-21c6-4904-0bc8-f5c398cab643-ca349128" class="w-layout-layout stackcontacto wf-layout-layout">
+
+    <div id="w-node-ccc2c89e-21c6-4904-0bc8-f5c398cab644-ca349128" class="w-layout-cell">
+      <div class="contcolcontacto">
+        <h2 class="titles-micuenta">Ventas Tienda Online</h2>
+
+        <div class="contactoform w-form">
+
+          {% form 'contact', id: 'ContactForm' %}
+
+          <label for="name" class="labelcontacto">Nombre completo*</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[Nombre]" type="text" required="">
+
+          <label for="email" class="labelcontacto">Correo electrónico (el mismo correo con el que realizaste la
+            compra)</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[email]" type="email" required="">
+
+          <label for="phone" class="labelcontacto">Teléfono*</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[Telefono]" type="tel" required="">
+
+          <label for="phone-2" class="labelcontacto">No. de Pedido # (Ejemplo:1160410):</label>
+          <input class="contactoinput w-input" maxlength="256" name="contact[Num. Pedido]" type="text">
+
+          <label for="field-2" class="labelcontacto">¿Cómo podemos ayudarte?</label>
+          <select name="contact[Asunto]" class="contactoinput w-select">
+            <option value="">Selecciona una opción</option>
+            <option value="ayuda">Atención al cliente</option>
+            <option value="duda">Duda sobre mi pedido</option>
+            <option value="cambiodevolucion">Cambio o devolución</option>
+            <option value="norecibido">No recibí mi pedido</option>
+            <option value="estatus">Estatus de mi pedido</option>
+          </select>
+
+          <label for="field-3" class="labelcontacto">Deja un mensaje breve (opcional)</label>
+          <textarea placeholder="Escribe aquí tu mensaje" maxlength="5000" name="contact[Mensaje]"
+            class="contactoinput txtarea w-input"></textarea>
+
+          <input type="submit" data-wait="Please wait..." class="loginpopbtn w-button" value="Enviar mensaje">
+          <label class="w-checkbox accept-tyc left">
+            <div class="w-checkbox-input w-checkbox-input--inputType-custom logincheck dark"></div>
+            <input type="checkbox" name="checkbox-2" id="checkbox-2" data-name="Checkbox 2" required=""
+              style="opacity:0;position:absolute;z-index:-1"
+              oninvalid="this.setCustomValidity('Marque esta casilla si desea continuar')">
+            <span class="w-form-label" for="checkbox-2">
+              <a href="/pages/terminos-y-condiciones" class="labelcheck-tyc pagina">Acepto Términos y Condiciones</a>
+            </span>
+          </label>
+          {%- if form.posted_successfully? -%}
+          <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+            {% render 'icon-success' %}
+            {{ 'templates.contact.form.post_success' | t }}
+          </h2>
+          {%- elsif form.errors -%}
+          <div class="form__message">
+            <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+              {% render 'icon-error' %}
+              {{ 'templates.contact.form.error_heading' | t }}
+            </h2>
+            <ul class="form-status-list caption-large" role="list">
+              <li>
+                <a href="#ContactForm-email" class="link">
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          {%- endif -%}
+          {% endform %}
+
+        </div>
+
+      </div>
+    </div>
+
+    <div id="w-node-ccc2c89e-21c6-4904-0bc8-f5c398cab645-ca349128" class="w-layout-cell">
+      <div class="contcolcontacto grey">
+        <h2 class="titles-micuenta center">Ventas Institucionales</h2>
+        <p class="txtinstitucionales">Si deseas que elaboremos tus productos institucionales como uniformes, pantalones,
+          camisas y otros, ponte en contacto con nosotros para una cotización:</p>
+        <a href="/pages/ventas-institucionales" class="contactmail">Contactar aquí</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+{
+"name": "Contacto",
+"enabled_on": {
+"templates": ["page"]
+},
+"settings": [],
+"presets": [
+{
+"name": "Contacto"
+}
+]
+}
+{% endschema %}

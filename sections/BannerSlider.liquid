@@ -1,0 +1,139 @@
+{% if section.blocks != blank %}
+
+  <div data-delay="4500" data-animation="slide" class="main-slider w-slider" data-autoplay="true" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="2000" data-infinite="true">
+    
+    <div class="w-slider-mask">
+
+      {% for block in section.blocks %}
+        {% if block.settings.desktop != blank %}
+          <div class="slidemain-home w-slide">
+            <a href="{{ block.settings.url }}" class="slideimglink w-inline-block">
+              <img src="{{ block.settings.desktop |  image_url }}"  alt="{{ block.settings.desktop.alt }}" class="imgslider">
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+
+    {% if section.blocks.size > 1 %}
+      <div class="mainslider-arrow banners w-slider-arrow-left">
+        <div class="w-icon-slider-left"></div>
+      </div>
+      <div class="mainslider-arrow banners w-slider-arrow-right">
+        <div class="w-icon-slider-right"></div>
+      </div>
+      <div class="main-slidenav w-slider-nav"></div>
+    {% endif %}
+
+  </div>
+
+  <div data-delay="4500" data-animation="slide" class="main-slider mobile w-slider" data-autoplay="true" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="2000" data-infinite="true">
+    
+    <div class="w-slider-mask">
+      {% for block in section.blocks %}
+        {% if block.settings.mobile != blank or block.settings.desktop != blank %}
+          <div class="slidemain-home w-slide">
+            <a href="{{ block.settings.url }}" class="slideimglink w-inline-block">
+              <img src="{%  if block.settings.mobile != blank  %} {{ block.settings.mobile |  image_url }} {%  else %} {{ block.settings.desktop |  image_url }}  {% endif %}"  alt="{{ block.settings.desktop.alt }}" class="imgslider">
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.blocks.size > 1 %}
+      <div class="mainslider-arrow mobilebanner w-slider-arrow-left">
+        <div class="w-icon-slider-left"></div>
+      </div>
+      <div class="mainslider-arrow mobilebanner w-slider-arrow-right">
+        <div class="w-icon-slider-right"></div>
+      </div>
+      <div class="main-slidenav w-slider-nav w-slider-nav-invert w-round"></div>
+    {% endif %}
+
+  </div>
+
+{% else %}
+
+  <div data-delay="4500" data-animation="slide" class="main-slider w-slider" data-autoplay="true" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="2000" data-infinite="true">
+    <div class="w-slider-mask">
+
+      <div class="slidemain-home w-slide">
+        <a href="#" class="slideimglink w-inline-block">{{ 'hero-apparel-1' | placeholder_svg_tag: 'imgslider' }}</a>
+      </div>
+
+    </div>
+
+    <div class="mainslider-arrow banners w-slider-arrow-left">
+      <div class="w-icon-slider-left"></div>
+    </div>
+    <div class="mainslider-arrow banners w-slider-arrow-right">
+      <div class="w-icon-slider-right"></div>
+    </div>
+    <div class="main-slidenav w-slider-nav"></div>
+
+  </div>
+
+  <div data-delay="4500" data-animation="slide" class="main-slider mobile w-slider" data-autoplay="true" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="2000" data-infinite="true">
+    <div class="w-slider-mask">
+
+      <div class="slidemain-home w-slide">
+        <a href="#" class="slideimglink w-inline-block">{{ 'hero-apparel-1' | placeholder_svg_tag: 'imgslider' }}</a>
+      </div>
+
+    </div>
+    <div class="mainslider-arrow mobilebanner w-slider-arrow-left">
+      <div class="w-icon-slider-left"></div>
+    </div>
+    <div class="mainslider-arrow mobilebanner w-slider-arrow-right">
+      <div class="w-icon-slider-right"></div>
+    </div>
+    <div class="main-slidenav w-slider-nav w-slider-nav-invert w-round"></div>
+  </div>
+
+{% endif %}
+
+{% schema %}
+{
+"name": "Banner Principal",
+"enabled_on": {
+"templates": ["index"]
+},
+"settings": [
+  {
+    "type": "paragraph",
+    "content": "El contenido de cada banner debe ser cargado en cada elemento Banner"
+  }
+],
+"max_blocks": 10,
+"blocks": [
+{
+"type": "image",
+"name": "Banner",
+"settings": [
+  {
+    "type": "image_picker",
+    "id": "desktop",
+    "label": "Images de Escritorio"
+  },
+  {
+    "type": "image_picker",
+    "id": "mobile",
+    "label": "Images Movil"
+  },
+  {
+    "type": "url",
+    "id": "url",
+    "label": "URL"
+  }
+]
+}
+],
+"presets": [
+{
+"name": "Banner Principal"
+}
+]
+}
+{% endschema %}

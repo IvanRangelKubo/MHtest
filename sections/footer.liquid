@@ -1,0 +1,319 @@
+<footer class="secc-footer">
+
+  <div class="custom-container footer">
+
+    <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b455-9557b436"
+      class="w-layout-layout stackfooter wf-layout-layout">
+
+      <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b456-9557b436" class="w-layout-cell">
+        <a href="{{ routes.root_url  }}" class="logolink-footer w-inline-block">
+          <img src="{{ section.settings.logo |  image_url }}" alt="brand" class="logofooter">
+        </a>
+      </div>
+
+      <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b459-9557b436" class="w-layout-cell">
+        <div class="colfooter">
+
+          <h5 data-w-id="135b385e-d8f5-74c6-2f6e-7fc89557b45b" class="footertiltulo">{{ section.settings.menu_1.title }}
+          </h5>
+          <div class="cont-items-footer">
+            <ul role="list" class="items-footer">
+              {% for link in section.settings.menu_1.links %}
+              <li class="item-list-footer">
+                <a href="{{ link.url }}" class="footerlink">{{ link.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b46b-9557b436" class="w-layout-cell">
+        <div class="colfooter">
+
+          <h5 data-w-id="135b385e-d8f5-74c6-2f6e-7fc89557b46d" class="footertiltulo">{{ section.settings.menu_2.title }}
+          </h5>
+          <div class="cont-items-footer">
+            <ul role="list" class="items-footer">
+
+              {% for link in section.settings.menu_2.links %}
+              <li class="item-list-footer">
+                <a href="{{ link.url }}" class="footerlink">{{ link.title }}</a>
+              </li>
+              {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b486-9557b436" class="w-layout-cell">
+        <div class="colfooter">
+          <h5 data-w-id="135b385e-d8f5-74c6-2f6e-7fc89557b488" class="footertiltulo">{{ section.settings.menu_3.title }}
+          </h5>
+          <div class="cont-items-footer">
+            <ul role="list" class="items-footer">
+              {% for link in section.settings.menu_3.links %}
+              <li class="item-list-footer">
+                <a href="{{ link.url }}" class="footerlink">{{ link.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b498-9557b436" class="w-layout-cell">
+        <div class="colfooter">
+
+          {% unless section.settings.email == blank and section.settings.email2 == blank and section.settings.phone ==
+          blank %}
+          <h5 data-w-id="135b385e-d8f5-74c6-2f6e-7fc89557b49a" class="footertiltulo">CONTACTO</h5>
+          <div class="cont-items-footer">
+            <ul role="list" class="items-footer">
+              {% unless section.settings.email == blank and section.settings.email2 == blank %}
+              <li class="item-list-footer contact">
+                <div class="regulartxtfooter">Escríbenos</div>
+              </li>
+              <li class="item-list-footer contact">
+                <a href="{{ section.settings.emailUrl }}" class="footerlink">{{ section.settings.email }}</a>
+              </li>
+              <li class="item-list-footer contact">
+                <a href="{{ section.settings.emailUrl2 }}" class="footerlink">{{ section.settings.email2 }}</a>
+              </li>
+              {% endunless %}
+
+              {% if section.settings.phone != blank %}
+              <li class="item-list-footer contact">
+                <div class="regulartxtfooter second">Llámanos</div>
+              </li>
+              <li class="item-list-footer contact">
+                <a href="tel:{{ section.settings.phone }}" class="footerlink">{{ section.settings.phonelabel }}</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+          {% endunless %}
+
+        </div>
+      </div>
+
+      <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b4ad-9557b436" class="w-layout-cell">
+        <div class="colfooter">
+
+          {% unless settings.social_facebook_link == blank and settings.social_instagram_link == blank and
+          settings.social_tiktok_link == blank %}
+          <h5 class="footertiltulo noarrow">SÍGUENOS</h5>
+          <div class="cont-items-footer visible">
+            <ul role="list" class="items-footer">
+              <li class="item-list-footer contact">
+
+                {% if settings.social_instagram_link != blank %}
+                <a href="{{ settings.social_instagram_link }}" target="_blank" class="footerlink w-inline-block">
+                  <img src="{{ " Artboard-3.png" | asset_url }}" alt="Instagram" class="footericon">
+                </a>
+                {% endif %}
+
+                {% if settings.social_facebook_link != blank %}
+                <a href="{{ settings.social_facebook_link }}" target="_blank" class="footerlink w-inline-block">
+                  <img src="{{ " Artboard-Copy-13.png" | asset_url }}" alt="Facebook" class="footericon">
+                </a>
+                {% endif %}
+
+                {% if settings.social_tiktok_link != blank %}
+                <a href="{{ settings.social_tiktok_link }}" target="_blank" class="footerlink w-inline-block">
+                  <img src="{{ " Artboard-Copy-14.png" | asset_url }}" alt="Tiktok" class="footericon">
+                </a>
+                {% endif %}
+
+              </li>
+            </ul>
+          </div>
+          {% endunless %}
+          {% if section.settings.certificate %}
+          <div class="cont-items-footer visible">
+            <ul role="list" class="items-footer">
+              <li class="item-list-footer contact">
+                <a href="{{ section.settings.certificateUrl }}" class="footerlink w-inline-block">
+                  <img src="{{ section.settings.certificate |  image_url }}" class="distintivo">
+                </a>
+              </li>
+            </ul>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      <div class="custom-container">
+        <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b4bf-9557b436"
+          class="w-layout-layout stackcopyr wf-layout-layout">
+          <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b4c0-9557b436" class="w-layout-cell">
+            <div class="copytxt" id="copy">Copyright © brand - Sé más tú. Todos los derechos reservados. Diseñado y
+              desarrollado por <a href="https://www.kubodigital.mx" target="_blank" class="linkd">Kubo Digital</a>
+            </div>
+          </div>
+          <div id="w-node-_135b385e-d8f5-74c6-2f6e-7fc89557b4c5-9557b436" class="w-layout-cell">
+            <div class="contlogospagos">
+              <img src="{{ section.settings.payment_1 | image_url }}" class="mediopago">
+              <img src="{{ section.settings.payment_2 | image_url }}" class="mediopago">
+              <img src="{{ section.settings.payment_3 | image_url }}" class="mediopago">
+              <img src="{{ section.settings.payment_4 | image_url }}" class="mediopago">
+              <img src="{{ section.settings.payment_5 | image_url }}" class="mediopago">
+              <img src="{{ section.settings.payment_6 | image_url }}" class="mediopago">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const copy = document.getElementById('copy');
+    const copyIndex = copy.innerHTML.indexOf('©');
+    const date = new Date();
+    const year = date.getFullYear();
+
+    if (copyIndex !== -1) {
+      const content = ` ${year}`
+      copy.innerHTML = copy.innerHTML.replace('©', '©' + content);
+    }
+  })
+</script>
+
+{% schema %}
+{
+"name": "Pie de pagina",
+"enabled_on": {
+"groups": ["footer"]
+},
+"settings": [
+{
+"type": "image_picker",
+"id": "logo",
+"label": "Logo"
+},
+{
+"type": "link_list",
+"id": "menu_1",
+"label": "Menu 1"
+},
+{
+"type": "link_list",
+"id": "menu_2",
+"label": "Menu 2"
+},
+{
+"type": "link_list",
+"id": "menu_3",
+"label": "Menu 3"
+},
+{
+"type": "header",
+"content": "Contacto"
+},
+{
+"type": "text",
+"id": "email",
+"label": "Email"
+},
+{
+"type": "url",
+"id": "emailUrl",
+"label": "Liga de contacto Email",
+"info": "La liga de contacto debe comenzar con mailto: seguido del correo electrónico"
+},
+{
+"type": "text",
+"id": "email2",
+"label": "Email Secundario"
+},
+{
+"type": "url",
+"id": "emailUrl2",
+"label": "Liga de contacto Email",
+"info": "La liga de contacto debe comenzar con mailto: seguido del correo electrónico"
+},
+{
+"type": "text",
+"id": "phonelabel",
+"label": "Etiqueta de telefono",
+"placeholder": "55 5804 42 42 Ext.1416"
+},
+{
+"type": "text",
+"id": "phone",
+"label": "Telefono"
+},
+{
+"type": "header",
+"content": "Redes Sociales"
+},
+{
+"type": "paragraph",
+"content": "La configuracion de redes sociales se hace desde la configuracion del Tema."
+},
+{
+"type": "header",
+"content": "Distintivo"
+},
+{
+"type": "image_picker",
+"id": "certificate",
+"label": "Distintivo"
+},
+{
+"type": "url",
+"id": "certificateUrl",
+"label": "Liga de Distintivo"
+},
+{
+"type": "header",
+"content": "Metodos de Pago"
+},
+{
+"type": "image_picker",
+"id": "payment_1",
+"label": "Metodo de Pago 1"
+},
+{
+"type": "image_picker",
+"id": "payment_2",
+"label": "Metodo de Pago 2"
+},
+{
+"type": "image_picker",
+"id": "payment_3",
+"label": "Metodo de Pago 3"
+},
+{
+"type": "image_picker",
+"id": "payment_4",
+"label": "Metodo de Pago 4"
+},
+{
+"type": "image_picker",
+"id": "payment_5",
+"label": "Metodo de Pago 5"
+},
+{
+"type": "image_picker",
+"id": "payment_6",
+"label": "Metodo de Pago 6"
+}
+],
+"presets": [
+{
+"name": "Pie de pagina"
+}
+]
+}
+{% endschema %}

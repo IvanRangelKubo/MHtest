@@ -1,0 +1,121 @@
+{% assign date_published = card_product.created_at | date:'%s' %}
+{% assign date_now = 'now' | date:'%s' %}
+{% assign date_difference = date_now | minus: date_published %}
+{% assign newproductlimit = settings.new_product | times:86400 %}
+
+<div class="container-producto">
+
+  <div class="contimgproducto">
+
+
+    {% if card_product.available == false %}
+    <div class="etiquetas-prod agotado">AGOTADO</div>
+    {% endif %}
+
+    {% if date_difference < newproductlimit and card_product.available==true %}
+      <div class="etiquetas-prod">NUEVO
+  </div>
+  {% endif %}
+
+  {% render 'discount-tag', product: card_product %}
+
+
+  <a href="{{ card_product.url }}" class="linkproducto w-inline-block">
+    <div class="imgback"
+      style="background-image:url({% if card_product.images[1] %}{{ card_product.images[1] |  image_url }}{% else %}{{ "
+      brandplaceholder.jpeg" | asset_url }}{% endif %})"></div>
+    <div class="imgfront {% unless card_product.images[1] %}hoveroff{% endunless %}"
+      style="background-image:url({% if card_product.featured_media %}{{ card_product.featured_media |  image_url  }}{% else %}{{ "
+      brandplaceholder.jpeg" | asset_url }}{% endif %})"></div>
+  </a>
+  {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
+  {% if quick_add %}
+  <div class="quick-add no-js-hidden">
+    {%- liquid
+    assign qty_rules = false
+    -%}
+    <div class="contquickview">
+      <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
+        <button
+          id="{{ product_form_id }}-submit"
+          type="submit"
+          name="add"
+          class="quick-add__submit"
+          aria-haspopup="dialog"
+          aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+          data-product-url="{{ card_product.url }}">
+          <img src="{{ 'quick_view_icon.svg' |  asset_url }}" class="iconquickshop">
+          {%- render 'loading-spinner' -%}
+        </button>
+      </modal-opener>
+    </div>
+
+    <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
+      <div
+        role="dialog"
+        aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
+        aria-modal="true"
+        class="quick-add-modal__content global-settings-popup"
+        tabindex="-1">
+        <button
+          id="ModalClose-{{ card_product.id }}"
+          type="button"
+          class="quick-add-modal__toggle"
+          aria-label="{{ 'accessibility.close' | t }}">
+          {{- 'icon-close.svg' | inline_asset_content -}}
+        </button>
+        <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
+      </div>
+    </quick-add-modal>
+  </div>
+  {%- endif -%}
+</div>
+
+<div class="container-titleandprices">
+
+  <a href="{{ card_product.url }}" class="nombre-producto">{{ card_product.title | escape }}</a>
+
+  {% render 'card-price', product: card_product %}
+
+</div>
+
+{% comment %} <div data-delay="4000" data-animation="slide" class="variacionesslider w-slider" data-autoplay="false"
+  data-easing="ease" data-hide-arrows="true" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3"
+  data-duration="500" data-infinite="false">
+  <div class="w-slider-mask"> {% endcomment %}
+    {%if card_product.options contains "Color" %}
+    <div id="barritavar" class="convar img-thumb">
+      {%- for options in card_product.options_with_values -%}
+      {%- if options.name contains 'Color' -%}
+      {% if options.values.size > 1 %}
+      {% for value in options.values %}
+      {% for variant in card_product.variants %}
+      {%if variant.image and variant.options contains value %}
+      {% assign secondimg = variant.image.position | plus:1 %}
+      <a href="#" class="varlink-min w-inline-block {% if secondimg == 2 %}currentselect{% endif %}"
+        title="{{ value | escape }}" data-color="{{ value | escape }}"
+        data-position="{{variant.image.position}} - {{secondimg}}" data-firstimg="{{variant.image | img_url: 'large' }}"
+        data-secondimg="{{card_product.images[secondimg] | img_url: 'large' }}" data-varianturl="{{ variant.url }}"><img
+          src="{{variant.image | img_url: '500x500' }}" alt="" class="picvarmin"></a>
+      {% break %}
+      {%endif%}
+      {% endfor %}
+      {% endfor %}
+      {% endif %}
+      {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {% endif %}
+    {% comment %}
+    <div class="varnavarrow w-slider-arrow-left">
+      <div class="w-icon-slider-left"></div>
+    </div>
+    <div class="varnavarrow w-slider-arrow-right">
+      <div class="w-icon-slider-right"></div>
+    </div>
+    <div class="varnavslide w-slider-nav w-round"></div>
+
+  </div> {% endcomment %}
+
+
+</div>

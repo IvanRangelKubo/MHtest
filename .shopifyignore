@@ -1,0 +1,13 @@
+.git/
+.github/
+node_modules/
+dist/
+build/
+src/
+*.map
+*.psd
+*.ai
+*.zip
+*.mov
+*.mp4
+*.webm

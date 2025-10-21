@@ -1,0 +1,256 @@
+<div class="custom-container section-{{ section.id }}">
+  <div class="containermicuenta">
+
+      <div class="titlecontainer">
+        <h1 class="secctitle red">{{ 'customer.order.title' | t: name: order.name }}</h1>
+        <div class="linetitle"></div>
+      </div>
+
+      {%- assign order_date = order.created_at | time_tag: format: "date_at_time" -%}
+      <p class="txtlogin" style="text-align: center;">{{ 'customer.order.date_html' | t: date: order_date }}</p>
+      <a href="{{ routes.account_url }}" class="logoutbutton btnmicuenta w-button" style="margin: auto;">Regresar</a>
+      {%- if order.cancelled -%}
+        {%- assign cancelled_at = order.cancelled_at | time_tag: format: "date_at_time" -%}
+        <p class="txtlogin">{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}<br>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}
+        </p>
+      {%- endif -%}
+
+      <div class="row-pedidos w-row">
+
+          <div class="w-col w-col-3">
+              <div class="div-block-14">
+                <h2 class="titles-micuenta">{{ 'customer.order.billing_address' | t }}</h2>
+                <div class="cont-infodirecc w-clearfix">
+                  <div class="infodireccion">{{ order.billing_address | format_address }}</div>
+                </div>
+              </div>
+              <div class="div-block-14" style="margin-top:20px;">
+                <h2 class="titles-micuenta">{{ 'customer.order.shipping_address' | t }}</h2>
+                <div class="cont-infodirecc w-clearfix">
+                  <div class="infodireccion">{{ order.shipping_address | format_address }}</div>
+                </div>
+              </div>
+          </div>
+
+          <div class="w-col w-col-9">
+            <div class="container-list-pedido">
+              <h2 class="titles-micuenta">{{ 'customer.order.title' | t: name: order.name }}</h2>
+              <div class="rowtitlepedidos w-row">
+                <div class="w-col w-col-2 w-col-small-2">
+                  <h4 class="titlecol-pedido">{{ 'customer.order.product' | t }}</h4>
+                </div>
+                <div class="w-col w-col-10 w-col-small-10">
+                  <div class="w-row">
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <h4 class="titlecol-pedido">{{ 'customer.order.sku' | t }}</h4>
+                    </div>
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <h4 class="titlecol-pedido">{{ 'customer.order.price' | t }}</h4>
+                    </div>
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <h4 class="titlecol-pedido">{{ 'customer.order.quantity' | t }}</h4>
+                    </div>
+                    <div class="w-col w-col-3 w-col-small-3">
+                      <h4 class="titlecol-pedido">{{ 'customer.order.total' | t }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              {%- for line_item in order.line_items -%}
+              <div class="rowpedido w-row" id="Row{{ line_item.key }}" {% if line_item.fulfillment %} style="margin-bottom:0px;"{% endif %}>
+                <div class="w-col w-col-2 w-col-small-2">
+                  <a href="{%- if line_item.url != blank -%}{{ line_item.url }}{%- else -%}#{%- endif -%}" class="pedidonumero">{{ line_item.title }}</a>
+                  {%- if line_item.line_level_discount_allocations != blank -%}
+                    {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+                      <h4 class="infopedido-list cupons">{{- discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money -}})</h4>
+                    {%- endfor -%}
+                  {%- endif -%}
+
+                </div>
+                <div class="w-col w-col-10 w-col-small-10">
+                  <div class="infopedido-datos w-row">
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ line_item.sku }}</h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ line_item.final_price | money }}</h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ line_item.quantity }}</h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      {%- if line_item.original_line_price != line_item.final_line_price -%}
+                      <h4 class="infopedido-list tachado">{{ line_item.original_line_price | money }}</h4>
+                      <h4 class="infopedido-list">{{ line_item.final_line_price | money }}</h4>
+                      {%- else -%}
+                      <h4 class="infopedido-list">{{ line_item.original_line_price | money }}</h4>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%- if line_item.fulfillment -%}
+              <div class="rowpedido w-row discountshipp" id="Row{{ line_item.key }}">
+                <div class="w-col">
+                  <h4 class="infopedido-list cupons fulfillment">
+                  {%- assign created_at = line_item.fulfillment.created_at | time_tag: format: 'date' -%}
+                  {{ 'customer.order.fulfilled_at_html' | t: date: created_at }}
+                  {%- if line_item.fulfillment.tracking_url -%}
+                    <a href="{{ line_item.fulfillment.tracking_url }}">
+                      {{ line_item.fulfillment.tracking_company }}
+                    {%- if line_item.fulfillment.tracking_number -%} #{{ line_item.fulfillment.tracking_number }} {%- endif -%}
+                    </a>
+                  {%- else -%}
+                  {{ line_item.fulfillment.tracking_company }}
+                {%- if line_item.fulfillment.tracking_number -%} #{{ line_item.fulfillment.tracking_number }} {%- endif -%}
+                  {%- endif -%}
+                  </h4>
+                </div>
+              </div>
+              {%- endif -%}
+              {%- endfor -%}
+              <div class="rowpedido w-row">
+                <div class="w-col w-col-2 w-col-small-2">
+                </div>
+                <div class="w-col w-col-10 w-col-small-10">
+                  <div class="infopedido-datos w-row">
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list"></h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list"></h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ 'customer.order.subtotal' | t }}</h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ order.line_items_subtotal_price | money }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%- if order.cart_level_discount_applications != blank -%}
+                {%- for discount_application in order.cart_level_discount_applications -%}
+                  <div class="rowpedido w-row">
+                    <div class="w-col w-col-2 w-col-small-2">
+                    </div>
+                    <div class="w-col w-col-10 w-col-small-10">
+                      <div class="infopedido-datos w-row">
+                        <div class="w-col w-col-3">
+                          <h4 class="infopedido-list"></h4>
+                        </div>
+                        <div class="w-col w-col-3">
+                          <h4 class="infopedido-list"></h4>
+                        </div>
+                        <div class="w-col w-col-3">
+                          <h4 class="infopedido-list">{{- discount_application.title -}}</h4>
+                        </div>
+                        <div class="w-col w-col-3">
+                          <h4 class="infopedido-list">-{{ discount_application.total_allocated_amount | money }}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+              {%- for shipping_method in order.shipping_methods -%}
+                <div class="rowpedido w-row">
+                  <div class="w-col w-col-2 w-col-small-2">
+                  </div>
+                  <div class="w-col w-col-10 w-col-small-10">
+                    <div class="infopedido-datos w-row">
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list"></h4>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list"></h4>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</h4>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list">{{ shipping_method.price | money }}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {%- endfor -%}
+            {%- for tax_line in order.tax_lines -%}
+              <div class="rowpedido w-row">
+                <div class="w-col w-col-2 w-col-small-2">
+                </div>
+                <div class="w-col w-col-10 w-col-small-10">
+                  <div class="infopedido-datos w-row">
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list"></h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list"></h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ tax_line.price | money }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%- endfor -%}
+              {%- if order.total_duties -%}
+              <div class="rowpedido w-row">
+                <div class="w-col w-col-2 w-col-small-2">
+                </div>
+                <div class="w-col w-col-10 w-col-small-10">
+                  <div class="infopedido-datos w-row">
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list"></h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list"></h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ 'customer.order.total_duties' | t }}</h4>
+                    </div>
+                    <div class="w-col w-col-3">
+                      <h4 class="infopedido-list">{{ order.total_duties | money }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+                <div class="rowpedido w-row">
+                  <div class="w-col w-col-2 w-col-small-2">
+                  </div>
+                  <div class="w-col w-col-10 w-col-small-10">
+                    <div class="infopedido-datos w-row">
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list"></h4>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list"></h4>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list">{{ 'customer.order.total' | t }}</h4>
+                      </div>
+                      <div class="w-col w-col-3">
+                        <h4 class="infopedido-list">{{ order.total_price | money_with_currency }}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+
+      </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-order.name",
+  "settings": [
+  ]
+}
+{% endschema %}

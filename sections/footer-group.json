@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "newsletter_mYcngE": {
+      "type": "Newsletter",
+      "settings": {
+        "image": "shopify://shop_images/icon_brand_red.svg",
+        "title": "ÚNETE A LA COMUNIDAD brand",
+        "description": "Suscríbete al boletín, conoce los nuevos lanzamientos y obtén descuentos y promociones especiales."
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "logo": "shopify://shop_images/brand_logo_Color.svg",
+        "menu_1": "footer",
+        "menu_2": "ayuda",
+        "menu_3": "mi-tienda",
+        "email": "ventasonline@brand.com.mx",
+        "emailUrl": "mailto:ventasonline@brand.com.mx?subject=Ventas%20Empresariales%20brand",
+        "email2": "ecommerce@brand.com.mx",
+        "emailUrl2": "mailto:ecommerce@brand.com.mx?subject=Tienda%20online%20brand",
+        "phonelabel": "55 5804 42 42 Ext.1416",
+        "phone": "55 5804 42 42",
+        "certificateUrl": "https://distintivodigital.profeco.gob.mx/consulta.php?serie=DA21YFE3411223",
+        "payment_1": "shopify://shop_images/Artboard-Copy-6.png",
+        "payment_2": "shopify://shop_images/Artboard.png",
+        "payment_3": "shopify://shop_images/Artboard-Copy-11.png",
+        "payment_4": "shopify://shop_images/Artboard-Copy-7.png",
+        "payment_5": "shopify://shop_images/Artboard-Copy-12.png",
+        "payment_6": "shopify://shop_images/Artboard-Copy-5.png"
+      }
+    }
+  },
+  "order": [
+    "newsletter_mYcngE",
+    "footer"
+  ]
+}

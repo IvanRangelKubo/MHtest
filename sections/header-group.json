@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_7pti9g": {
+          "type": "announcement",
+          "settings": {
+            "text": "ENVÍOS GRATIS - A todo México en compras mayores a $ 699",
+            "link": "shopify://collections/all"
+          }
+        },
+        "announcement_kribfe": {
+          "type": "announcement",
+          "settings": {
+            "text": "Conoce nuestra nueva tienda en linea.",
+            "link": "shopify://collections/promociones-hombre"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_7pti9g",
+        "announcement_kribfe"
+      ],
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo": "shopify://shop_images/brand_logo_Color.svg",
+        "menu": "main-menu",
+        "featured_link_text": "% PROMOCIONES",
+        "featured_link_url": "shopify://collections/promociones",
+        "show_featured_link": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

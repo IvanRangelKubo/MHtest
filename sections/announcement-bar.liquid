@@ -1,0 +1,84 @@
+<div class="topbanner">
+  <div class="custom-container">
+    <div data-delay="4000" data-animation="cross" class="topbannerslider w-slider" data-autoplay="true" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="750" data-infinite="true">
+      <div class="masktop-slider w-slider-mask">
+        {%- for block in section.blocks -%}
+        <div class="topslide w-slide">
+          <div class="continfotop-flex">
+            <a href="{{ block.settings.link }}" class="linktopbanner">{{ block.settings.text | escape }}</a>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+      <div class="arrowtop-slider w-slider-arrow-left">
+        <div class="w-icon-slider-left"></div>
+      </div>
+      <div class="arrowtop-slider w-slider-arrow-right">
+        <div class="w-icon-slider-right"></div>
+      </div>
+      <div class="topslidenav w-slider-nav"></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Barra de Anuncios",
+  "max_blocks": 12,
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Anuncios"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Rotar anuncios automáticamente",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Cambiar cada",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Anuncio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Bienvenido a nuestra tienda",
+          "label": "Texto"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barra de anuncios",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,54 @@
+{% if collection.image != blank %}
+
+  <div class="custom-container" >
+    <a href="{{ collection.url }}" class="lisitnglinkbanner w-inline-block">
+      <img src="{{ collection.image |  image_url }}" alt="{{ collection.title |  escape }}" class="bannerlisitng">
+    </a>
+
+    {% if collection.metafields.custom.banner_mobile %}
+      <a href="{{ collection.url }}" class="lisitnglinkbanner mobile w-inline-block">
+        <img src="{{ collection.metafields.custom.banner_mobile |  img_url:'master'  }}" alt="{{ collection.title |  escape }}" class="bannerlisitng">
+      </a>
+    {% else  %}
+      <a href="{{ collection.url }}" class="lisitnglinkbanner mobile w-inline-block">
+        <img src="{{ collection.image |  image_url }}" alt="{{ collection.title |  escape }}" class="bannerlisitng">
+      </a>
+    {% endif %}
+  
+  </div>
+
+{% else %}
+  <div class="custom-container">
+    <div class="contitlelisting">
+      <h1 class="listingtitle">{{ collection.title }}</h1>
+      <ul role="list" class="arbol-navegacion">
+        <li class="list-item-arbollist-item-arbol">
+          <a href="{{ routes.all_products_collection_url }}" class="categoria-arbol">Catálogo &gt;</a>
+        </li>
+        <li class="list-item-arbollist-item-arbol">
+          <a href="{{ collection.url }}" class="categoria-arbol">{{ collection.title }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endif %}
+
+{% schema  %}
+{
+  "name": "Banner de Coleccion",
+  "enabled_on": {
+    "templates": ["collection","search","404"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "La configuración de este banner se realiza en la sección de colecciones de la tienda."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner de Coleccion"
+    }
+  ]
+}
+{% endschema %}

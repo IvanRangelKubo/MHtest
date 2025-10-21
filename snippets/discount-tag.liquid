@@ -1,0 +1,30 @@
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign available = target.available | default: false
+  assign money_price = price | money
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+  endif
+
+  if target == product and product.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+-%}
+
+{%- assign money_price = price | money -%}
+
+
+{% assign porcentaje = price | times: 100 | divided_by: compare_at_price %}
+{% assign porcentaje = 100 | minus: porcentaje %}
+
+
+{% if compare_at_price > price and product.available %}
+  <div class="etiquetas-prod oferta">-{{porcentaje  }}%</div>
+{% endif %}

@@ -1,0 +1,128 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "sku_t3GbJF": {
+          "type": "sku",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "aplazo_banner_product_banner_4Cfgpe": {
+          "type": "shopify://apps/aplazo-banner/blocks/product-banner/baf789e0-a296-4b10-bc87-11417720714b",
+          "settings": {
+            "aplazo_theme": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "size_guide_LBzkEX": {
+          "type": "size_guide",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "sku_t3GbJF",
+        "price",
+        "aplazo_banner_product_banner_4Cfgpe",
+        "variant_picker",
+        "size_guide_LBzkEX",
+        "quantity_selector",
+        "buy_buttons",
+        "description"
+      ],
+      "settings": {
+        "enable_sticky_info": true
+      }
+    },
+    "warranties_ReqNMf": {
+      "type": "Warranties",
+      "blocks": {
+        "home_warranty_EYdd73": {
+          "type": "home-warranty",
+          "settings": {
+            "image": "shopify://shop_images/icon_envios.svg",
+            "description": "ENVÍO GRATIS a todo México en compras mayores a $ 699"
+          }
+        },
+        "home_warranty_thD99k": {
+          "type": "home-warranty",
+          "settings": {
+            "image": "shopify://shop_images/icon_compras-seguras.svg",
+            "description": "Garantía de 7 días en todas tus compras."
+          }
+        },
+        "home_warranty_dRjQHQ": {
+          "type": "home-warranty",
+          "settings": {
+            "image": "shopify://shop_images/icon_descuentos.svg",
+            "description": "Cupón -10% en tu primera compra al suscribirte."
+          }
+        },
+        "home_warranty_rFY44J": {
+          "type": "home-warranty",
+          "settings": {
+            "image": "shopify://shop_images/icon_pagos.svg",
+            "description": "Todas las formas de pago, compras 100% seguras."
+          }
+        }
+      },
+      "block_order": [
+        "home_warranty_EYdd73",
+        "home_warranty_thD99k",
+        "home_warranty_dRjQHQ",
+        "home_warranty_rFY44J"
+      ],
+      "settings": {}
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "COMPLETA TU OUTFIT",
+        "products_to_show": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "warranties_ReqNMf",
+    "related-products"
+  ]
+}

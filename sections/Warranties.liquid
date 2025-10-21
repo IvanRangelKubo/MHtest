@@ -1,0 +1,108 @@
+{% if section.blocks != blank %}
+  
+  <div class="seccgarantias">
+    <div class="custom-container">
+
+      <div data-delay="3000" data-animation="cross" class="warrantyslide w-slider" data-autoplay="true" data-easing="ease-in-out" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
+        
+        <div class="mask w-slider-mask">
+
+          {% for block in section.blocks %}
+            <div class="garantiaslide w-slide">
+              <div class="continfowarranty">
+                <img  src="{{ block.settings.image |  image_url }}" class="iconwarranty">
+                <p class="infowarranty">{{ block.settings.description }}</p>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+
+        <div class="garantiasarrow w-slider-arrow-left">
+          <div class="w-icon-slider-left"></div>
+        </div>
+        <div class="garantiasarrow w-slider-arrow-right">
+          <div class="w-icon-slider-right"></div>
+        </div>
+        <div class="warrantyslidenav w-slider-nav w-slider-nav-invert w-round"></div>
+
+      </div>
+    </div>
+  </div>
+
+{% else %}
+  <div class="seccgarantias">
+    <div class="custom-container">
+      <div data-delay="3000" data-animation="cross" class="warrantyslide w-slider" data-autoplay="true" data-easing="ease-in-out" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
+        <div class="mask w-slider-mask">
+          <div class="garantiaslide w-slide">
+            <div class="continfowarranty"><img  src="{{ "icon_envios.svg" | asset_url }}" alt="icon autenticidad" class="iconwarranty">
+              <p class="infowarranty">ENVÍO GRATIS a todo México en compras mayores a $ 1500</p>
+            </div>
+          </div>
+          <div class="garantiaslide w-slide">
+            <div class="continfowarranty"><img  src="{{ "icon_compras-seguras.svg" | asset_url }}" alt="icon autenticidad" class="iconwarranty">
+              <p class="infowarranty">Garantía de 7 días en todas tus compras.</p>
+            </div>
+          </div>
+          <div class="garantiaslide w-slide">
+            <div class="continfowarranty"><img  src="{{ "icon_descuentos.svg" | asset_url }}" alt="icon autenticidad" class="iconwarranty">
+              <p class="infowarranty">Cupón -10% en tu primera compra al suscribirte.</p>
+            </div>
+          </div>
+          <div class="garantiaslide w-slide">
+            <div class="continfowarranty"><img  src="{{ "icon_pagos.svg" | asset_url }}" alt="icon autenticidad" class="iconwarranty">
+              <p class="infowarranty">Todas las formas de pago, compras 100% seguras.</p>
+            </div>
+          </div>
+        </div>
+        <div class="garantiasarrow w-slider-arrow-left">
+          <div class="w-icon-slider-left"></div>
+        </div>
+        <div class="garantiasarrow w-slider-arrow-right">
+          <div class="w-icon-slider-right"></div>
+        </div>
+        <div class="warrantyslidenav w-slider-nav w-slider-nav-invert w-round"></div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+"name": "Garantias",
+"enabled_on": {
+  "templates": ["index","product"]
+},
+"settings": [
+  {
+    "type": "paragraph",
+    "content": "La configuración de esta seccion se realiza en cada bloque de forma individual."
+  }
+],
+"max_blocks": 4,
+"blocks": [
+{
+"type": "home-warranty",
+"name": "Garantia",
+"settings": [
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Icono"
+  },
+  {
+    "type": "textarea",
+    "id": "description",
+    "label": "Descripción"
+  }
+]
+}
+],
+"presets": [
+{
+"name": "Garantias"
+}
+]
+}
+{% endschema %}

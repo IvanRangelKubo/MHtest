@@ -1,0 +1,88 @@
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<div class="secc-productos">
+  <div class="custom-container">
+
+    <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="w-tabs">
+
+      <div class="tabs-menu w-tab-menu">
+
+        {% for block in section.blocks %}
+          <a data-w-tab="Tab {{forloop.index}}" class="tabregular w-inline-block w-tab-link {% if forloop.first %} w--current {% endif %}">
+            <div>{{ block.settings.tabCollection.title }}</div>
+          </a>
+        {% endfor %}
+
+      </div>
+
+      <div class="w-tab-content">
+
+      {% for block in section.blocks %} 
+        {%- assign collection_tab = collections[block.settings.tabCollection] -%}
+        <div data-w-tab="Tab {{forloop.index}}" class="w-tab-pane {% if forloop.first  %} w--tab-active {% endif %}">
+          <div class="carruselhtml w-embed">
+            <div class="owl-carousel productosowl owl-theme" id="sync2">
+
+              {% for product in collection_tab.products limit: block.settings.product_range %}
+                {% render 'card-product', 
+                  card_product: product,
+                  quick_add: true,
+                  section_id: section.id
+                %}
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "Colecciones",
+"enabled_on": {
+"templates": ["index"]
+},
+"settings": [
+  {
+    "type": "paragraph",
+    "content": "La configuracion de esta seccion se realiza de forma individial en cada colecccion"
+  }
+],
+"max_blocks": 3,
+"blocks": [
+{
+"type": "collection",
+"name": "Coleccion",
+"settings": [
+  {
+    "type": "collection",
+    "id": "tabCollection",
+    "label": "Coleccion"
+  },
+  {
+    "type": "range",
+    "id": "limit",
+    "label": "Productos a mostrar",
+    "min": 1,
+    "max": 12,
+    "step": 1,
+    "default": 4
+  }
+]
+}
+],
+"presets": [
+{
+"name": "Colecciones"
+}
+]
+}
+{% endschema %}

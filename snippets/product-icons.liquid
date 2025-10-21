@@ -1,0 +1,42 @@
+<div class="contextrainfo iconsdescrip">
+{% if product.metafields.custom.composicion %} 
+  {% for composicion in metaobjects.iconos_composicion.values %}
+      {% if composicion.nombre_del_material.value contains product.metafields.custom.composicion  %}
+        <div class="descripicon"><img src="{{ composicion.icono.value | image_url: width: '150x' }}" alt="{{ product.metafields.custom.composicion }}" class="iconlinkvip">
+        <div class="txticonvip">{{ product.metafields.custom.composicion }}</div>
+        </div>
+      {%  endif %}
+  {% endfor %} 
+{% endif %}
+{% if product.metafields.custom.tiro %} 
+ <div class="descripicon"><img src="{{ "tipo_de_corte.svg" | asset_url}}" alt="Corte Icon" class="iconlinkvip">
+   <div class="txticonvip">{{  product.metafields.custom.tiro}}</div>
+ </div>
+{%  endif %}
+ {% if product.metafields.custom.corte %} 
+ <div class="descripicon"><img src="{{ "tiro.svg" | asset_url}}" alt="Tiro Icon" class="iconlinkvip">
+   <div class="txticonvip">{{ product.metafields.custom.corte }}</div>
+ </div>
+{% endif %}
+</div>
+{% if product.metafields.custom.composicion %} 
+  {% for composicion in metaobjects.iconos_composicion.values %}
+    {% if composicion.nombre_del_material.value contains product.metafields.custom.composicion  %}
+      {% if composicion.cuidados_del_material.value %}
+      <div data-hover="false" data-delay="0" class="dropcuidados w-dropdown">
+        <div class="toggle-desscription w-dropdown-toggle">
+          <div class="w-icon-dropdown-toggle"></div>
+          <div class="titulovip sub">Cuidados</div>
+        </div>
+        <nav class="contdropdescrip w-dropdown-list">
+          <div class="descripcion-corta">
+          <div class="txtdescription">
+            {{composicion.cuidados_del_material.value}}
+          </div>
+          </div>
+        </nav>
+      </div>
+      {% endif %}
+    {%  endif %}
+  {%  endfor %}
+{%  endif %}

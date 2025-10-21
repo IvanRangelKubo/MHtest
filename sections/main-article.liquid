@@ -1,0 +1,148 @@
+
+<div class="custom-container">
+  <div class="cuerpo-blogentry">
+    <article class="article-template" itemscope itemtype="http://schema.org/BlogPosting">
+      {%- for block in section.blocks -%}
+      {%- case block.type -%}
+      {%- when '@app' -%}
+      {% render block %}
+      {%- when 'featured_image'-%}
+      {%- if article.image -%}
+        <div class="article-template__hero-container" style="text-align: center;">
+          <img
+            src="{{ article.image | image_url: width: 1100 }}"
+
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+            alt="{{ article.image.alt | escape }}" class="picblog-entry">
+        </div>
+      {%- endif -%}
+
+      {%- when 'title'-%}
+      <div class="titlecontainer">
+        <h1 class="blogentrytitle">{{ article.title | escape }}</h1>
+      </div>
+      <div class="cont-title-secc" style="margin: auto; width:max-content;">
+        {%- if block.settings.blog_show_date -%}
+        <span class="circle-divider subtitle-cuenta" itemprop="dateCreated pubdate datePublished">{{
+          article.published_at | time_tag: format: 'date' }}</span>
+        {%- endif -%}
+        {%- if block.settings.blog_show_author -%}
+        <span class="subtitle-cuenta" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span itemprop="name">{{ article.author }}</span>
+        </span>
+        {%- endif -%}
+      </div>
+
+      {%- when 'content'-%}
+      <div class="txtabout" itemprop="articleBody" {{ block.shopify_attributes }}>
+        {{ article.content }}
+      </div>
+
+      {%- when 'share' -%}
+        <div class="contsocial-media blogentry">
+          <div class="titulovip-elements social">Compartir</div>
+          <a data-network="copy" href="#" class="st-custom-button w-inline-block"><img src="{{ 'socialicon.svg' |  asset_url }}" class="iconshare-social"></a>
+          <a data-network="facebook" href="#" class="st-custom-button w-inline-block"><img src="{{ 'socialicon-copy.svg' |  asset_url }}" alt="Facebook" class="iconshare-social"></a>
+          <a data-network="whatsapp" href="#" class="st-custom-button w-inline-block"><img src="{{ 'socialicon-copy-3.svg' |  asset_url }}" alt="WhatsApp" class="iconshare-social"></a>
+          <a data-network="telegram" href="#" class="st-custom-button w-inline-block"><img src="{{ 'socialicon-copy-5.svg' |  asset_url }}" alt="Telegram" class="iconshare-social"></a>
+          <a data-network="messenger" href="#" class="st-custom-button w-inline-block"><img src="{{ 'socialicon-copy-4.svg' |  asset_url }}" alt="Messenger" class="iconshare-social"></a>
+          <a data-network="twitter" href="#" class="st-custom-button w-inline-block"><img src="{{ 'icon_twitter.svg' |  asset_url }}" alt="Twitter" class="iconshare-social"></a>
+        </div>
+      {%- endcase -%}
+      {%- endfor -%}
+
+      <a href="{{ blog.url }}" class="ctaback w-button" style="margin-bottom: 20px;">
+        {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
+      </a>
+    </article>
+  </div>
+</div>
+
+<script type="application/ld+json">
+
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "articleBody": {{ article.content | strip_html | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ request.origin | append: page.url | json }}
+    },
+    "headline": {{ article.title | json }},
+    {% if article.excerpt != blank %}
+      "description": {{ article.excerpt | strip_html | json }},
+    {% endif %}
+    {% if article.image %}
+      "image": [
+        {{ article | image_url: width: article.image.width | prepend: "https:" | json }}
+      ],
+    {% endif %}
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "author": {
+      "@type": "Person",
+      "name": {{ article.author | json }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      {% if settings.share_image %}
+        "logo": {
+          "@type": "ImageObject",
+          "height": {{ settings.share_image.height | json }},
+          "url": {{ settings.share_image | image_url: width: settings.share_image.width | prepend: "https:" | json }},
+          "width": {{ settings.share_image.width | json }}
+        },
+      {% endif %}
+      "name": {{ shop.name | json }}
+    }
+  }
+</script>
+
+
+{% schema %}
+{
+"name": "t:sections.main-article.name",
+"tag": "section",
+"class": "section",
+"blocks": [
+{
+"type": "@app"
+},
+{
+"type": "featured_image",
+"name": "t:sections.main-article.blocks.featured_image.name",
+"limit": 1
+},
+{
+"type": "title",
+"name": "t:sections.main-article.blocks.title.name",
+"limit": 1,
+"settings": [
+{
+"type": "checkbox",
+"id": "blog_show_date",
+"default": true,
+"label": "t:sections.main-article.blocks.title.settings.blog_show_date.label"
+},
+{
+"type": "checkbox",
+"id": "blog_show_author",
+"default": false,
+"label": "t:sections.main-article.blocks.title.settings.blog_show_author.label"
+}
+]
+},
+{
+"type": "content",
+"name": "t:sections.main-article.blocks.content.name",
+"limit": 1
+},
+{
+"type": "share",
+"name": "t:sections.main-article.blocks.share.name",
+"limit": 1
+}
+]
+}
+{% endschema %}

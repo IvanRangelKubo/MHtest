@@ -1,0 +1,79 @@
+{% if section.blocks != blank %}
+
+  <div class="seccgridcuatro">
+    <div class="custom-container grid">
+      <div id="w-node-_86f5b5bb-0c87-714b-5702-ba46283f2e9f-bfeb76ea" class="w-layout-layout stackgrid wf-layout-layout">
+
+        {% for block in section.blocks %}
+          <div id="w-node-_86f5b5bb-0c87-714b-5702-ba46283f2ea0-bfeb76ea" class="w-layout-cell">
+            <a href="{{ block.settings.url }}" class="linkgrid w-inline-block">
+              <img src="{{ block.settings.image |  image_url }}"  alt="{{ block.settings.image }}" class="imggrid">
+            </a>
+          </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="seccgridcuatro">
+    <div class="custom-container grid">
+      <div id="w-node-_86f5b5bb-0c87-714b-5702-ba46283f2e9f-bfeb76ea" class="w-layout-layout stackgrid wf-layout-layout">
+        <div id="w-node-_86f5b5bb-0c87-714b-5702-ba46283f2ea0-bfeb76ea" class="w-layout-cell">
+          <a href="#" class="linkgrid w-inline-block"><img src="{{ "Grids-960x1000-corte_regular.jpg" | asset_url }}" class="imggrid"></a>
+        </div>
+        <div id="w-node-_86f5b5bb-0c87-714b-5702-ba46283f2ea1-bfeb76ea" class="w-layout-cell">
+          <a href="#" class="linkgrid w-inline-block"><img src="{{ "Grids-960x1000-corte_slim.jpg" | asset_url }}" class="imggrid"></a>
+        </div>
+        <div id="w-node-_4a54b3e0-272c-5e23-047c-5b768b53036c-bfeb76ea" class="w-layout-cell">
+          <a href="#" class="linkgrid w-inline-block"><img src="{{ "Grids-960x1000-supply_caballero.jpg" | asset_url }}" class="imggrid"></a>
+        </div>
+        <div id="w-node-dc6c3b25-1188-6306-b1a5-331fb1e33906-bfeb76ea" class="w-layout-cell">
+          <a href="#" class="linkgrid w-inline-block"><img src="{{ "Grids-960x1000-supply_dama.jpg" | asset_url }}" class="imggrid"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endif %}
+
+{% schema %}
+{
+"name": "Cuadricula",
+"enabled_on": {
+"templates": ["index"]
+},
+"settings": [
+  {
+    "type": "paragraph",
+    "content": "La configuración de esta seccion se realiza en cada bloque de forma individual."
+  }
+],
+"max_blocks": 6,
+"blocks": [
+{
+"type": "image",
+"name": "Banner",
+"settings": [
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Imagen"
+  },
+  {
+    "type": "url",
+    "id": "url",
+    "label": "URL"
+  }
+]
+}
+],
+"presets": [
+{
+"name": "Cuadricula"
+}
+]
+}
+{% endschema %}

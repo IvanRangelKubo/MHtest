@@ -1,0 +1,44 @@
+<div class="custom-container">
+  <div class="containermicuenta">
+    <div class="formin">
+
+      <div class="titlecontainer">
+        <h1 class="secctitle red">CREAR CUENTA</h1>
+        <div class="linetitle"></div>
+      </div>
+      
+        <div class="loginform w-form">
+
+          {%- form 'create_customer', class: 'contenidoformlog' -%}
+          <input placeholder="{{ 'customer.register.first_name' | t }}" class="loginreg-field border w-input" maxlength="256" name="customer[first_name]" id="RegisterForm-FirstName" {% if form.first_name %}value="{{ form.first_name }}" {% endif %} placeholder="" type="text" required="">
+          <input placeholder="{{ 'customer.register.last_name' | t }}" class="loginreg-field border w-input" maxlength="256" name="customer[last_name]" id="RegisterForm-LastName" {% if form.last_name %}value="{{ form.last_name }}" {% endif %} placeholder="" type="text" required="">
+          <input placeholder="{{ 'customer.register.email' | t }}" class="loginreg-field mail border w-input" maxlength="256" name="customer[email]" id="RegisterForm-email" {% if form.email %} value="{{ form.email }}" {% endif %} aria-required="true" {% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="RegisterForm-email-error" {% endif %} placeholder="" type="email" required="">
+            {%- if form.errors contains 'email' -%}
+            <span id="RegisterForm-email-error" class="form__message">
+              {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+            </span>
+            {%- endif -%}
+          <input placeholder="{{ 'customer.register.password' | t }}" class="loginreg-field pass border w-input" maxlength="256" name="customer[password]" id="RegisterForm-password" aria-required="true" {% if form.errors contains 'password' %} aria-invalid="true" aria-describedby="RegisterForm-password-error" {% endif %} placeholder="" type="password" required="">
+            {%- if form.errors contains 'password' -%}
+            <span id="RegisterForm-password-error" class="form__message">
+              {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
+            </span>
+            {%- endif -%}
+          <input type="submit" data-wait="espera..." class="loginpopbtn w-button" value="Crear cuenta">
+
+          <label class="w-checkbox accept-tyc left">
+            <div class="w-checkbox-input w-checkbox-input--inputType-custom logincheck dark"></div>
+            <input type="checkbox" name="checkbox-2" id="checkbox-2" data-name="Checkbox 2" required="" style="opacity:0;position:absolute;z-index:-1" oninvalid="this.setCustomValidity('Marque esta casilla si desea continuar')" >
+            <span class="w-form-label" for="checkbox-2">
+              <a href="#" class="labelcheck-tyc pagina">Acepto el Aviso de Privacidad</a>
+            </span>
+          </label>
+
+              {%- endform -%}
+        </div>
+      
+    
+    </div>
+  </div>
+</div>
+{% schema %} { "name": "t:sections.main-register.name", "settings": [] } {% endschema %}

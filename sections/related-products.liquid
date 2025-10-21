@@ -1,0 +1,111 @@
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cardimgthumb.js' | asset_url }}" ></script>
+
+<product-recommendations
+  class="related-products section-{{ section.id }}-padding isolate secc-productos" id="recommendations-shopify-product"
+  data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  >    
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <div class="custom-container">
+      <div class="titlecontainer">
+        <h2 class="secctitle">{{ section.settings.heading }}</h2>
+      </div>
+      <div class="carruselhtml w-embed">
+        <div class="owl-carousel productosowl owl-theme" id="sync2">
+          {% for recommendation in recommendations.products %}
+            {% render 'card-product',
+               card_product: recommendation,
+               quick_add: true,
+               section_id: section.id
+              %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </product-recommendations>
+  
+
+
+<script>
+  const targetDiv = document.getElementById("recommendations-shopify-product");
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    $(".recommendations_pageproduct").removeClass("hidde");
+    thumbcard();
+    $(".productosowl").owlCarousel({
+      loop:false,
+      margin:3,    
+      navRewind: true,
+      autoWidth:false,
+      autoplay:false,
+      animateOut: 'fadeOut',
+      slideSpeed: 4000,
+      navText: ['<div class="mainslider-arrow w-slider-arrow-left"><div class="w-icon-slider-left"></div></div>','<div class="mainslider-arrow w-slider-arrow-right"><div class="w-icon-slider-right"></div></div>'],
+      animateOut: 'fadeOut',
+      responsiveClass:true,
+      responsive:{
+          0:{
+              items:1,
+              nav:true,
+              dots:false,
+              mouseDrag: true,
+              touchDrag: true
+          },
+          480:{
+              items:2,
+              nav:true,
+              dots:false,
+              mouseDrag: true,
+              touchDrag: true
+          },
+          767:{
+              items:3,
+              nav:true,
+              dots:false,
+              mouseDrag: true,
+              touchDrag: true
+          },
+      991:{
+              items:4,
+              nav:true,
+              dots:false
+          }
+      }
+  });
+  });
+  const config = { childList: true, characterData: true, subtree: true };
+  observer.observe(targetDiv, config);
+  </script>
+
+{% schema %}
+{
+  "name": "t:sections.related-products.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.related-products.settings.paragraph__1.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.related-products.settings.paragraph__1.default",
+      "label": "t:sections.related-products.settings.heading.label"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.related-products.settings.products_to_show.label"
+    }
+  ]
+}
+{% endschema %}
