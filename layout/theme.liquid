@@ -392,10 +392,11 @@
 </head>
 
 <body class="body">
+
   <a class="skip-to-content-link button visually-hidden" href="#MainContent">
     {{ 'accessibility.skip_to_text' | t }}
   </a>
-  {% render 'cart-drawer' %}
+  {% sections 'cart-drawer' %}
   <div data-w-id="87a25407-152c-71f3-41d0-66c4ea8a835a" class="sectionheader">
     {% sections 'header-group'%}
   </div>
