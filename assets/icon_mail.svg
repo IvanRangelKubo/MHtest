@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Frame 4</title>
+    <g id="Frame-4" stroke="none" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+        <g id="mail_icon" transform="translate(6, 10)" stroke="#FF4604">
+            <path d="M3.4,0 L30.6,0 C32.47,0 34,1.4625 34,3.25 L34,22.75 C34,24.5375 32.47,26 30.6,26 L3.4,26 C1.53,26 0,24.5375 0,22.75 L0,3.25 C0,1.4625 1.53,0 3.4,0 Z" id="Path" stroke-width="2.25807839"></path>
+            <polyline id="Path" stroke-width="2.25807839" points="34 3.25 17 14.625 0 3.25"></polyline>
+        </g>
+    </g>
+</svg>
